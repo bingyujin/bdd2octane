@@ -1,0 +1,113 @@
+<testsuite name="dealer.Some terse yet descriptive text of what is desired like bla bla" tests="4" errors="0"
+           failures="1" skipped="1" time="0.010039" timestamp="2021-09-08T15:15:07.307275" hostname="ZZchenhaok01">
+    <testcase classname="dealer.Some terse yet descriptive text of what is desired like bla bla"
+              name="Some determinable business situation" status="failed" time="0.002041">
+        <failure type="NoneType" message="None">
+            <![CDATA[
+Failing step: Given the following people exist: ... undefined in 0.000s
+Location: features/dealer.feature:14
+None]]>
+        </failure>
+        <system-out>
+            <![CDATA[
+@scenario.begin
+
+
+
+  @Quick @full @annoy @TSCID1001
+  Scenario: Some determinable business situation
+    Given a global administrator named "Greg" ... passed in 0.001s
+    * a blog named "Greg's anti-tax rants" ... passed in 0.001s
+    * a customer named "Wilson" ... passed in 0.000s
+    Given the following people exist: ... undefined in 0.000s
+    And some precondition 1 ... skipped in 0.000s
+    When some action by the actor ... skipped in 0.000s
+    And some other action ... skipped in 0.000s
+    Then some testable outcome is achieved ... skipped in 0.000s
+    And something else we can check happens too ... skipped in 0.000s
+
+
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+        </system-out>
+    </testcase>
+    <testcase classname="dealer.Some terse yet descriptive text of what is desired like bla bla"
+              name="Some another scenario 2" status="skipped" time="0.003">
+        <skipped/>
+        <system-out>
+            <![CDATA[
+@scenario.begin
+
+
+
+  @Quick @nightly @TSCID1002
+  Scenario: Some another scenario 2
+    Given a global administrator named "Greg" ... passed in 0.001s
+    * a blog named "Greg's anti-tax rants" ... passed in 0.000s
+    * a customer named "Wilson" ... passed in 0.001s
+    Given some precondition ... skipped in 0.001s
+    And some other precondition with doc string ... skipped in 0.000s
+    When some action by the actor ... skipped in 0.000s
+    And yet another action ... skipped in 0.000s
+    Then some testable outcome is achieved ... skipped in 0.000s
+    * something else we can check happens too ... skipped in 0.000s
+    But I don't see something else ... skipped in 0.000s
+
+
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+        </system-out>
+    </testcase>
+    <testcase classname="dealer.Some terse yet descriptive text of what is desired like bla bla"
+              name="feeding a cow cow1 yum yum yum -- @1.1 " status="passed" time="0.001999">
+        <system-out>
+            <![CDATA[
+@scenario.begin
+
+
+
+  @TSCID1003
+  Scenario Outline: feeding a cow cow1 yum yum yum -- @1.1
+    Given a global administrator named "Greg" ... passed in 0.000s
+    * a blog named "Greg's anti-tax rants" ... passed in 0.001s
+    * a customer named "Wilson" ... passed in 0.000s
+    Given the cow weighs 450 kg ... passed in 0.000s
+    When we calculate the feeding requirements ... passed in 0.001s
+    Then the energy should be 26500 MJ ... passed in 0.000s
+
+
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+        </system-out>
+    </testcase>
+    <testcase classname="dealer.Some terse yet descriptive text of what is desired like bla bla"
+              name="feeding a cow cow2 yum yum yum -- @1.2 " status="passed" time="0.002999">
+        <system-out>
+            <![CDATA[
+@scenario.begin
+
+
+
+  @TSCID1003
+  Scenario Outline: feeding a cow cow2 yum yum yum -- @1.2
+    Given a global administrator named "Greg" ... passed in 0.000s
+    * a blog named "Greg's anti-tax rants" ... passed in 0.001s
+    * a customer named "Wilson" ... passed in 0.000s
+    Given the cow weighs 500 kg ... passed in 0.001s
+    When we calculate the feeding requirements ... passed in 0.000s
+    Then the energy should be 29500 MJ ... passed in 0.001s
+
+
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+        </system-out>
+    </testcase>
+</testsuite>

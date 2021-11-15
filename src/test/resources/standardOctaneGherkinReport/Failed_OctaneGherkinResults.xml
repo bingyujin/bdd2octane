@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features version="1">
+    <feature name="Some terse yet descriptive text of what is desired like bla bla"
+             path="src\test\resources\features\aaa\RobustGherkin.feature" started="1628156474" tag="">
+        <file><![CDATA[@billing @bicker @annoy
+Feature: Some terse yet descriptive text of what is desired like bla bla
+A description with
+multiple
+lines
+
+  Background:
+    Given a global administrator named "Greg"
+    * a blog named "Greg's anti-tax rants"
+    * a customer named "Wilson"
+
+  @Quick @full @annoy
+  Scenario: Some determinable business situation
+    Given the following people exist:
+      | name  | email           | phone |
+      | Aila  | aila@email.com  | 123   |
+      | Joe   | joe@email.com   | 234   |
+    And some precondition 1
+    When some action by the actor
+    And some other action
+    Then some testable outcome is achieved
+    And something else we can check happens too
+
+  @Quick @nightly
+  Example: Some another scenario 2
+  scenario 2 description
+    Given some precondition
+    And some other precondition with doc string
+		"""
+		this is comment
+		"""
+    When some action by the actor
+    And yet another action
+    Then some testable outcome is achieved
+    * something else we can check happens too
+    But I don't see something else
+
+
+  Scenario Outline: feeding a cow <name> yum yum yum
+  scenario outline
+  description
+    Given the cow weighs <weight> kg
+    When we calculate the feeding requirements
+    Then the energy should be <energy> MJ
+
+    Examples:
+      | name | weight | energy |
+      | cow1 |  450   |  26500 |
+      | cow2 |  500   |  29500 |]]></file>
+        <scenarios>
+            <scenario name="Some determinable business situation">
+                <steps>
+                    <step duration="2000000" name="Given a global administrator named &quot;Greg&quot;"
+                          status="passed"/>
+                    <step duration="2000000" name="* a blog named &quot;Greg&apos;s anti-tax rants&quot;"
+                          status="passed"/>
+                    <step duration="2000000" name="* a customer named &quot;Wilson&quot;" status="passed"/>
+                    <step duration="2000000"
+                          name="Given the following people exist:&#10; | name | email | phone |&#10; | Aila | aila@email.com | 123 |&#10; | Joe | joe@email.com | 234 |"
+                          status="passed"/>
+                    <step duration="2000000" name="And some precondition 1" status="Passed"/>
+                    <step duration="2000000" name="When some action by the actor" status="Passed"/>
+                    <step duration="2000000" name="And some other action" status="Passed"/>
+                    <step duration="2000000" name="Then some testable outcome is achieved"
+                          status="failed">
+                        <error_message><![CDATA[java.lang.AssertionError: expected:<1> but was:<2>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at org.junit.Assert.assertEquals(Assert.java:631)
+	at gherkinStepDefs.aGlobalAdministratorNamed(gherkinStepDefs.java:7)
+	at ✽.a global administrator named "Greg"(src/test/resources/robustgherkin.feature:7)
+]]></error_message>
+                    </step>
+                    <step duration="2000000" name="And something else we can check happens too" status="skipped"/>
+                </steps>
+            </scenario>
+            <scenario name="Some another scenario 2">
+                <steps>
+                    <step duration="2000000" name="Given a global administrator named &quot;Greg&quot;"
+                          status="passed"/>
+                    <step duration="2000000" name="* a blog named &quot;Greg&apos;s anti-tax rants&quot;"
+                          status="passed"/>
+                    <step duration="2000000" name="* a customer named &quot;Wilson&quot;" status="Passed"/>
+                    <step duration="2000000" name="Given some precondition" status="Passed"/>
+                    <step duration="2000000" name="And some other precondition with doc string&#10;this is comment"
+                          status="passed"/>
+                    <step duration="2000000" name="When some action by the actor" status="Passed"/>
+                    <step duration="2000000" name="And yet another action" status="Passed"/>
+                    <step duration="2000000" name="Then some testable outcome is achieved"
+                          status="failed">
+                        <error_message><![CDATA[java.lang.AssertionError: expected:<1> but was:<2>
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.junit.Assert.failNotEquals(Assert.java:834)
+	at org.junit.Assert.assertEquals(Assert.java:645)
+	at org.junit.Assert.assertEquals(Assert.java:631)
+	at gherkinStepDefs.aGlobalAdministratorNamed(gherkinStepDefs.java:7)
+	at ✽.a global administrator named "Greg"(src/test/resources/robustgherkin.feature:7)
+]]></error_message>
+                    </step>
+                    <step duration="2000000" name="* something else we can check happens too" status="skipped"/>
+                    <step duration="2000000" name="But I don't see something else" status="undefined"/>
+                </steps>
+            </scenario>
+            <scenario name="feeding a cow &lt;name&gt; yum yum yum" outlineIndex="1">
+                <steps>
+                    <step duration="2000000" name="Given a global administrator named &quot;Greg&quot;"
+                          status="passed"/>
+                    <step duration="2000000" name="* a blog named &quot;Greg&apos;s anti-tax rants&quot;"
+                          status="passed"/>
+                    <step duration="2000000" name="* a customer named &quot;Wilson&quot;" status="passed"/>
+                    <step duration="2000000" name="Given the cow weighs 450 kg" status="passed"/>
+                    <step duration="2000000" name="When we calculate the feeding requirements" status="passed"/>
+                    <step duration="2000000" name="Then the energy should be 26500 MJ" status="passed"/>
+                </steps>
+            </scenario>
+            <scenario name="feeding a cow &lt;name&gt; yum yum yum" outlineIndex="2">
+                <steps>
+                    <step duration="2000000" name="Given a global administrator named &quot;Greg&quot;"
+                          status="passed"/>
+                    <step duration="2000000" name="* a blog named &quot;Greg&apos;s anti-tax rants&quot;"
+                          status="passed"/>
+                    <step duration="2000000" name="* a customer named &quot;Wilson&quot;" status="passed"/>
+                    <step duration="2000000" name="Given the cow weighs 500 kg" status="passed"/>
+                    <step duration="2000000" name="When we calculate the feeding requirements" status="passed"/>
+                    <step duration="2000000" name="Then the energy should be 29500 MJ" status="passed"/>
+                </steps>
+            </scenario>
+        </scenarios>
+    </feature>
+</features>

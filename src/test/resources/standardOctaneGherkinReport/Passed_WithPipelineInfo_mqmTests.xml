@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--> this file can be injected into octane directly</-->
+<test_result>
+    <build server_id="ci_server_iFhH" job_id="PushResult_KIGiJ" job_name="PushResult_KIGiJ" build_id="3" build_name="3"/>
+    <test_runs>
+        <gherkin_test_run duration="1216282210" name="bddSpecDoUAs" status="passed">
+            <feature name="Some terse yet descriptive text of what is desired like bla bla" path="src\test\resources\features\aaa\RobustGherkin.feature" started="1628156474" tag="">
+                <file><![CDATA[@billing @bicker @annoy
+Feature: Some terse yet descriptive text of what is desired like bla bla
+A description with
+multiple
+lines
+
+  Background:
+    Given a global administrator named "Greg"
+    * a blog named "Greg's anti-tax rants"
+    * a customer named "Wilson"
+
+  @Quick @full @annoy
+  Scenario: Some determinable business situation
+    Given the following people exist:
+      | name  | email           | phone |
+      | Aila  | aila@email.com  | 123   |
+      | Joe   | joe@email.com   | 234   |
+    And some precondition 1
+    When some action by the actor
+    And some other action
+    Then some testable outcome is achieved
+    And something else we can check happens too
+
+  @Quick @nightly
+  Example: Some another scenario 2
+  scenario 2 description
+    Given some precondition
+    And some other precondition with doc string
+		"""
+		this is comment
+		"""
+    When some action by the actor
+    And yet another action
+    Then some testable outcome is achieved
+    * something else we can check happens too
+    But I don't see something else
+
+
+  Scenario Outline: feeding a cow <name> yum yum yum
+  scenario outline
+  description
+    Given the cow weighs <weight> kg
+    When we calculate the feeding requirements
+    Then the energy should be <energy> MJ
+
+    Examples:
+      | name | weight | energy |
+      | cow1 |  450   |  26500 |
+      | cow2 |  500   |  29500 |]]></file>
+                <scenarios>
+                    <scenario name="Some determinable business situation" status="passed">
+                        <steps>
+                            <step duration="2000000" name="Given a global administrator named &quot;Greg&quot;" status="passed" />
+                            <step duration="2000000" name="* a blog named &quot;Greg&apos;s anti-tax rants&quot;" status="passed" />
+                            <step duration="2000000" name="* a customer named &quot;Wilson&quot;" status="passed" />
+                            <step duration="2000000" name="Given the following people exist:&#10; | name | email | phone |&#10; | Aila | aila@email.com | 123 |&#10; | Joe | joe@email.com | 234 |" status="passed" />
+                            <step duration="2000000" name="And some precondition 1" status="passed" />
+                            <step duration="2000000" name="When some action by the actor" status="passed" />
+                            <step duration="2000000" name="And some other action" status="passed" />
+                            <step duration="2000000" name="Then some testable outcome is achieved" status="passed" />
+                            <step duration="2000000" name="And something else we can check happens too" status="passed" />
+                        </steps>
+                    </scenario>
+                    <scenario name="Some another scenario 2" status="passed">
+                        <steps>
+                            <step duration="2000000" name="Given a global administrator named &quot;Greg&quot;" status="passed" />
+                            <step duration="2000000" name="* a blog named &quot;Greg&apos;s anti-tax rants&quot;" status="passed" />
+                            <step duration="2000000" name="* a customer named &quot;Wilson&quot;" status="passed" />
+                            <step duration="2000000" name="Given some precondition" status="passed" />
+                            <step duration="2000000" name="And some other precondition with doc string&#10;this is comment" status="passed" />
+                            <step duration="2000000" name="When some action by the actor" status="passed" />
+                            <step duration="2000000" name="And yet another action" status="passed" />
+                            <step duration="2000000" name="Then some testable outcome is achieved" status="passed" />
+                            <step duration="2000000" name="* something else we can check happens too" status="passed" />
+                            <step duration="2000000" name="But I don't see something else" status="passed" />
+                        </steps>
+                    </scenario>
+                    <scenario name="feeding a cow &lt;name&gt; yum yum yum" outlineIndex="1" status="passed">
+                        <steps>
+                            <step duration="2000000" name="Given a global administrator named &quot;Greg&quot;" status="passed" />
+                            <step duration="2000000" name="* a blog named &quot;Greg&apos;s anti-tax rants&quot;" status="passed" />
+                            <step duration="2000000" name="* a customer named &quot;Wilson&quot;" status="passed" />
+                            <step duration="2000000" name="Given the cow weighs 450 kg" status="passed" />
+                            <step duration="2000000" name="When we calculate the feeding requirements" status="passed" />
+                            <step duration="2000000" name="Then the energy should be 26500 MJ" status="passed" />
+                        </steps>
+                    </scenario>
+                    <scenario name="feeding a cow &lt;name&gt; yum yum yum" outlineIndex="2" status="passed">
+                        <steps>
+                            <step duration="2000000" name="Given a global administrator named &quot;Greg&quot;" status="passed" />
+                            <step duration="2000000" name="* a blog named &quot;Greg&apos;s anti-tax rants&quot;" status="passed" />
+                            <step duration="2000000" name="* a customer named &quot;Wilson&quot;" status="passed" />
+                            <step duration="2000000" name="Given the cow weighs 500 kg" status="passed" />
+                            <step duration="2000000" name="When we calculate the feeding requirements" status="passed" />
+                            <step duration="2000000" name="Then the energy should be 29500 MJ" status="passed" />
+                        </steps>
+                    </scenario>
+                </scenarios>
+            </feature>
+        </gherkin_test_run>
+    </test_runs>
+</test_result>

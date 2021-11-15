@@ -1,0 +1,8 @@
+.idea
+.vscode
+.classpath
+.project
+.settings
+*.iml
+target/
+*result.xml

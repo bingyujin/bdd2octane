@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+    <testsuite name="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;some-determinable-business-situation" tests="9" failures="0" skipped="0">
+        <properties>
+            <property name="@billing" value="true">
+            </property>
+            <property name="@bicker" value="true">
+            </property>
+            <property name="@annoy" value="true">
+            </property>
+            <property name="@BSPID1037REV0.0.1" value="true">
+            </property>
+            <property name="@Quick" value="true">
+            </property>
+            <property name="@full" value="true">
+            </property>
+            <property name="@annoy" value="true">
+            </property>
+            <property name="@TSCID1108" value="true">
+            </property>
+            <property name="URI" value="features/robustgherkin03.feature">
+            </property>
+        </properties>
+        <testcase name="Given a global administrator named &quot;Greg&quot;" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;some-determinable-business-situation" time="0.001">
+        </testcase>
+        <testcase name="* a blog named &quot;Greg&apos;s anti-tax rants&quot;" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;some-determinable-business-situation">
+        </testcase>
+        <testcase name="* a customer named &quot;Wilson&quot;" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;some-determinable-business-situation">
+        </testcase>
+        <testcase name="Given the following people exist:" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;some-determinable-business-situation" time="0.001">
+        </testcase>
+        <testcase name="And some precondition 1" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;some-determinable-business-situation">
+        </testcase>
+        <testcase name="When some action by the actor" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;some-determinable-business-situation">
+        </testcase>
+        <testcase name="And some other action" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;some-determinable-business-situation">
+        </testcase>
+        <testcase name="Then some testable outcome is achieved" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;some-determinable-business-situation">
+        </testcase>
+        <testcase name="And something else we can check happens too" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;some-determinable-business-situation">
+        </testcase>
+    </testsuite>
+    <testsuite name="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;some-another-scenario-2" tests="10"
+               failures="0" skipped="10">
+        <properties>
+            <property name="@billing" value="true">
+            </property>
+            <property name="@bicker" value="true">
+            </property>
+            <property name="@annoy" value="true">
+            </property>
+            <property name="@BSPID1037REV0.0.1" value="true">
+            </property>
+            <property name="@Quick" value="true">
+            </property>
+            <property name="@nightly" value="true">
+            </property>
+            <property name="@TSCID1109" value="true">
+            </property>
+            <property name="URI" value="features/robustgherkin03.feature">
+            </property>
+        </properties>
+        <testcase name="Given a global administrator named &quot;Greg&quot;"
+                  classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;some-another-scenario-2">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="* a blog named &quot;Greg&apos;s anti-tax rants&quot;"
+                  classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;some-another-scenario-2">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="* a customer named &quot;Wilson&quot;"
+                  classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;some-another-scenario-2">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="Given some precondition"
+                  classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;some-another-scenario-2">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And some other precondition with doc string"
+                  classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;some-another-scenario-2">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="When some action by the actor"
+                  classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;some-another-scenario-2">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="And yet another action"
+                  classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;some-another-scenario-2">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="Then some testable outcome is achieved"
+                  classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;some-another-scenario-2">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="* something else we can check happens too"
+                  classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;some-another-scenario-2">
+            <skipped message="">
+            </skipped>
+        </testcase>
+        <testcase name="But I don&apos;t see something else"
+                  classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;some-another-scenario-2">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;feeding-a-cow-cow1-yum-yum-yum" tests="6" failures="1" skipped="1">
+        <properties>
+            <property name="@billing" value="true">
+            </property>
+            <property name="@bicker" value="true">
+            </property>
+            <property name="@annoy" value="true">
+            </property>
+            <property name="@BSPID1037REV0.0.1" value="true">
+            </property>
+            <property name="@TSCID1110" value="true">
+            </property>
+            <property name="URI" value="features/robustgherkin03.feature">
+            </property>
+        </properties>
+        <testcase name="Given a global administrator named &quot;Greg&quot;" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;feeding-a-cow-cow1-yum-yum-yum">
+        </testcase>
+        <testcase name="* a blog named &quot;Greg&apos;s anti-tax rants&quot;" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;feeding-a-cow-cow1-yum-yum-yum">
+        </testcase>
+        <testcase name="* a customer named &quot;Wilson&quot;" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;feeding-a-cow-cow1-yum-yum-yum">
+        </testcase>
+        <testcase name="Given the cow weighs 450 kg" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;feeding-a-cow-cow1-yum-yum-yum">
+        </testcase>
+        <testcase name="When we calculate the feeding requirements" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;feeding-a-cow-cow1-yum-yum-yum">
+            <failure message="Error: Weight can not be null">Error: Weight can not be null
+                at checkEnergy (C:\Users\zousu\Learning\hellocucumber\features\step_definitions\stepdef.js:14:11)
+                at World.&lt;anonymous&gt; (C:\Users\zousu\Learning\hellocucumber\features\step_definitions\stepdef.js:103:17)</failure>
+        </testcase>
+        <testcase name="Then the energy should be 26500 MJ" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;feeding-a-cow-cow1-yum-yum-yum">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;feeding-a-cow-cow1-yum-yum-yum" tests="6" failures="1" skipped="1">
+        <properties>
+            <property name="@billing" value="true">
+            </property>
+            <property name="@bicker" value="true">
+            </property>
+            <property name="@annoy" value="true">
+            </property>
+            <property name="@BSPID1037REV0.0.1" value="true">
+            </property>
+            <property name="@TSCID1110" value="true">
+            </property>
+            <property name="URI" value="features/robustgherkin03.feature">
+            </property>
+        </properties>
+        <testcase name="Given a global administrator named &quot;Greg&quot;" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;feeding-a-cow-cow1-yum-yum-yum">
+        </testcase>
+        <testcase name="* a blog named &quot;Greg&apos;s anti-tax rants&quot;" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;feeding-a-cow-cow1-yum-yum-yum">
+        </testcase>
+        <testcase name="* a customer named &quot;Wilson&quot;" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;feeding-a-cow-cow1-yum-yum-yum">
+        </testcase>
+        <testcase name="Given the cow weighs 480 kg" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;feeding-a-cow-cow1-yum-yum-yum">
+        </testcase>
+        <testcase name="When we calculate the feeding requirements" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;feeding-a-cow-cow1-yum-yum-yum">
+            <failure message="Error: Weight can not be null">Error: Weight can not be null
+                at checkEnergy (C:\Users\zousu\Learning\hellocucumber\features\step_definitions\stepdef.js:14:11)
+                at World.&lt;anonymous&gt; (C:\Users\zousu\Learning\hellocucumber\features\step_definitions\stepdef.js:103:17)</failure>
+        </testcase>
+        <testcase name="Then the energy should be 27500 MJ" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;feeding-a-cow-cow1-yum-yum-yum">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+    <testsuite name="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;feeding-a-cow-cow2-yum-yum-yum" tests="6" failures="1" skipped="1">
+        <properties>
+            <property name="@billing" value="true">
+            </property>
+            <property name="@bicker" value="true">
+            </property>
+            <property name="@annoy" value="true">
+            </property>
+            <property name="@BSPID1037REV0.0.1" value="true">
+            </property>
+            <property name="@TSCID1110" value="true">
+            </property>
+            <property name="URI" value="features/robustgherkin03.feature">
+            </property>
+        </properties>
+        <testcase name="Given a global administrator named &quot;Greg&quot;" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;feeding-a-cow-cow2-yum-yum-yum">
+        </testcase>
+        <testcase name="* a blog named &quot;Greg&apos;s anti-tax rants&quot;" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;feeding-a-cow-cow2-yum-yum-yum">
+        </testcase>
+        <testcase name="* a customer named &quot;Wilson&quot;" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;feeding-a-cow-cow2-yum-yum-yum">
+        </testcase>
+        <testcase name="Given the cow weighs 500 kg" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;feeding-a-cow-cow2-yum-yum-yum">
+        </testcase>
+        <testcase name="When we calculate the feeding requirements" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;feeding-a-cow-cow2-yum-yum-yum" time="0.001">
+            <failure message="Error: Weight can not be null">Error: Weight can not be null
+                at checkEnergy (C:\Users\zousu\Learning\hellocucumber\features\step_definitions\stepdef.js:14:11)
+                at World.&lt;anonymous&gt; (C:\Users\zousu\Learning\hellocucumber\features\step_definitions\stepdef.js:103:17)</failure>
+        </testcase>
+        <testcase name="Then the energy should be 29500 MJ" classname="some-terse-yet-descriptive-text-of-what-is-desired-like-bla-bla;feeding-a-cow-cow2-yum-yum-yum">
+            <skipped message="">
+            </skipped>
+        </testcase>
+    </testsuite>
+</testsuites>

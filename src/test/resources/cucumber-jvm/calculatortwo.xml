@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite failures="1" name="cucumber.runtime.formatter.JUnitFormatter" skipped="0" tests="4" time="0.017646">
+    <testcase classname="加法运算" name="相加" time="0.008661">
+        <system-out>
+            <![CDATA[假如x等于1和y等于2.................................................................passed
+当调用相加方法.....................................................................passed
+那么结果将等于3....................................................................passed
+]]>
+        </system-out>
+    </testcase>
+    <testcase classname="加法运算" name="相加_2" time="0.002056">
+        <system-out>
+            <![CDATA[假如x等于2和y等于3.................................................................passed
+当调用相加方法.....................................................................passed
+那么结果将等于5....................................................................passed
+]]>
+        </system-out>
+    </testcase>
+    <testcase classname="加法运算" name="相加_3" time="0.002196">
+        <system-out>
+            <![CDATA[假如x等于3和y等于4.................................................................passed
+当调用相加方法.....................................................................passed
+那么结果将等于7....................................................................passed
+]]>
+        </system-out>
+    </testcase>
+    <testcase classname="加法运算" name="相加_4" time="0.004733">
+        <failure message="java.lang.AssertionError: &#10;Expected: &lt;10&gt;&#10;     but: was &lt;9&gt;&#13;&#10;&#9;at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:18)&#13;&#10;&#9;at org.junit.Assert.assertThat(Assert.java:956)&#13;&#10;&#9;at org.junit.Assert.assertThat(Assert.java:923)&#13;&#10;&#9;at features.addtwo.CalculatorSteps.结果将等于(CalculatorSteps.java:32)&#13;&#10;&#9;at ✽.结果将等于10(file:src/test/resources/features/addtwo/calculator.feature:21)&#13;&#10;">
+            <![CDATA[假如x等于4和y等于5.................................................................passed
+当调用相加方法.....................................................................passed
+那么结果将等于10...................................................................failed
+
+StackTrace:
+java.lang.AssertionError: 
+Expected: <10>
+     but: was <9>
+	at org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:18)
+	at org.junit.Assert.assertThat(Assert.java:956)
+	at org.junit.Assert.assertThat(Assert.java:923)
+	at features.addtwo.CalculatorSteps.结果将等于(CalculatorSteps.java:32)
+	at ✽.结果将等于10(file:src/test/resources/features/addtwo/calculator.feature:21)
+]]>
+        </failure>
+    </testcase>
+</testsuite>

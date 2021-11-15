@@ -1,0 +1,131 @@
+<testsuite name="dealer.Some terse yet descriptive text of what is desired like bla bla" tests="4" errors="0" failures="0" skipped="0" time="0.018874" timestamp="2021-07-13T16:21:48.240947" hostname="ZZchenhaok01">
+  <testcase classname="dealer.Some terse yet descriptive text of what is desired like bla bla" name="Some determinable business situation" status="passed" time="0.005407">
+    <system-out>
+      <![CDATA[
+@scenario.begin
+
+  @Quick @full @annoy
+  Scenario: Some determinable business situation
+    Given a global administrator named "Greg" ... passed in 0.001s
+    * a blog named "Greg's anti-tax rants" ... passed in 0.001s
+    * a customer named "Wilson" ... passed in 0.001s
+    Given the following people exist ... passed in 0.001s
+      | name | email          | phone |
+      | Aila | aila@email.com | 123   |
+      | Joe  | joe@email.com  | 234   |
+    And some precondition 1 ... passed in 0.000s
+    When some action by the actor ... passed in 0.000s
+    And some other action ... passed in 0.001s
+    Then some testable outcome is achieved ... passed in 0.001s
+    And something else we can check happens too ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+STEP: Given a global administrator named "Greg"
+STEP: Given a blog named "Greg's anti-tax rants"
+STEP: Given a customer named "Wilson"
+<Row ['Aila', 'aila@email.com', '123']>
+<Row ['Joe', 'joe@email.com', '234']>
+STEP: Given some precondition 1
+STEP: When some action by the actor
+STEP: When some other action
+STEP: Then some testable outcome is achieved
+STEP: Then something else we can check happens too
+
+]]>
+    </system-out>
+  </testcase>
+  <testcase classname="dealer.Some terse yet descriptive text of what is desired like bla bla" name="Some another scenario 2" status="passed" time="0.003976">
+    <system-out>
+      <![CDATA[
+@scenario.begin
+
+  @Quick @nightly
+  Scenario: Some another scenario 2
+    Given a global administrator named "Greg" ... passed in 0.000s
+    * a blog named "Greg's anti-tax rants" ... passed in 0.001s
+    * a customer named "Wilson" ... passed in 0.000s
+    Given some precondition ... passed in 0.001s
+    And some other precondition with doc string ... passed in 0.001s
+      """
+      this is comment
+      """
+    When some action by the actor ... passed in 0.000s
+    And yet another action ... passed in 0.001s
+    Then some testable outcome is achieved ... passed in 0.000s
+    * something else we can check happens too ... passed in 0.000s
+    But I don't see something else ... passed in 0.001s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+STEP: Given a global administrator named "Greg"
+STEP: Given a blog named "Greg's anti-tax rants"
+STEP: Given a customer named "Wilson"
+STEP: Given some precondition
+STEP: Given some other precondition with doc string
+STEP: When some action by the actor
+STEP: When yet another action
+STEP: Then some testable outcome is achieved
+STEP: Given something else we can check happens too
+STEP: Given I don't see something else
+
+]]>
+    </system-out>
+  </testcase>
+  <testcase classname="dealer.Some terse yet descriptive text of what is desired like bla bla" name="feeding a cow cow1 yum yum yum -- @1.1 " status="passed" time="0.004478">
+    <system-out>
+      <![CDATA[
+@scenario.begin
+  Scenario Outline: feeding a cow cow1 yum yum yum -- @1.1 
+    Given a global administrator named "Greg" ... passed in 0.000s
+    * a blog named "Greg's anti-tax rants" ... passed in 0.001s
+    * a customer named "Wilson" ... passed in 0.001s
+    Given the cow weighs 450 kg ... passed in 0.001s
+    When we calculate the feeding requirements ... passed in 0.000s
+    Then the energy should be 26500 MJ ... passed in 0.001s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+STEP: Given a global administrator named "Greg"
+STEP: Given a blog named "Greg's anti-tax rants"
+STEP: Given a customer named "Wilson"
+STEP: Given the cow weighs kg: 450
+STEP: When we calculate the feeding requirements
+STEP: Then the energy should be MJ: 26500
+
+]]>
+    </system-out>
+  </testcase>
+  <testcase classname="dealer.Some terse yet descriptive text of what is desired like bla bla" name="feeding a cow cow2 yum yum yum -- @1.2 " status="passed" time="0.005013">
+    <system-out>
+      <![CDATA[
+@scenario.begin
+  Scenario Outline: feeding a cow cow2 yum yum yum -- @1.2 
+    Given a global administrator named "Greg" ... passed in 0.001s
+    * a blog named "Greg's anti-tax rants" ... passed in 0.001s
+    * a customer named "Wilson" ... passed in 0.000s
+    Given the cow weighs 500 kg ... passed in 0.001s
+    When we calculate the feeding requirements ... passed in 0.001s
+    Then the energy should be 29500 MJ ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+STEP: Given a global administrator named "Greg"
+STEP: Given a blog named "Greg's anti-tax rants"
+STEP: Given a customer named "Wilson"
+STEP: Given the cow weighs kg: 500
+STEP: When we calculate the feeding requirements
+STEP: Then the energy should be MJ: 29500
+
+]]>
+    </system-out>
+  </testcase>
+</testsuite>

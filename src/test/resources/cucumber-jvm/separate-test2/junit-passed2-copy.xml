@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="4" time="0.206">
+    <testcase classname="Some terse yet descriptive text of what is desired like bla bla" name="Some another scenario 2" time="0.002">
+        <system-out>
+            <![CDATA[Given a global administrator named "Greg"...................................passed
+* a blog named "Greg's anti-tax rants"......................................passed
+* a customer named "Wilson".................................................passed
+Given some precondition.....................................................passed
+And some other precondition with doc string.................................passed
+When some action by the actor...............................................passed
+And yet another action......................................................passed
+Then some testable outcome is achieved......................................passed
+* something else we can check happens too...................................passed
+But I don't see something else..............................................passed
+]]>
+        </system-out>
+    </testcase>
+</testsuite>

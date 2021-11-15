@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite failures="3" errors="0" skipped="0" tests="5" time="0.081233" name="Some terse yet descriptive text of what is desired like bla bla 3 examples">
+  <testcase classname="Some terse yet descriptive text of what is desired like bla bla 3 examples" name="Some determinable business situation" time="0.050410">
+    <system-out>
+      <![CDATA[Given: some precondition 1
+]]>
+    </system-out>
+    <system-err>
+      <![CDATA[]]>
+    </system-err>
+  </testcase>
+  <testcase classname="Some terse yet descriptive text of what is desired like bla bla 3 examples" name="Some another scenario 2" time="0.007835">
+    <system-out>
+      <![CDATA[]]>
+    </system-out>
+    <system-err>
+      <![CDATA[]]>
+    </system-err>
+  </testcase>
+  <testcase classname="Some terse yet descriptive text of what is desired like bla bla 3 examples" name="feeding a cow &lt;name&gt; yum yum yum (outline example : | cow1 | 450 | 26500 |)" time="0.007322">
+    <failure message="failed feeding a cow &lt;name&gt; yum yum yum (outline example : | cow1 | 450 | 26500 |)" type="failed">
+      <![CDATA[Scenario Outline: feeding a cow <name> yum yum yum
+
+Example row: | cow1 | 450 | 26500 |
+
+Message:
+]]>
+      <![CDATA[error (RuntimeError)
+./features/step_definitions/gherkin_sample.rb:48:in `nil'
+features/gherkin_sample.feature:48:42:in `the cow weighs 450 kg']]>
+    </failure>
+    <system-out>
+      <![CDATA[]]>
+    </system-out>
+    <system-err>
+      <![CDATA[]]>
+    </system-err>
+  </testcase>
+  <testcase classname="Some terse yet descriptive text of what is desired like bla bla 3 examples" name="feeding a cow &lt;name&gt; yum yum yum (outline example : | cow1 | 451 | 26501 |)" time="0.008263">
+    <failure message="failed feeding a cow &lt;name&gt; yum yum yum (outline example : | cow1 | 451 | 26501 |)" type="failed">
+      <![CDATA[Scenario Outline: feeding a cow <name> yum yum yum
+
+Example row: | cow1 | 451 | 26501 |
+
+Message:
+]]>
+      <![CDATA[error (RuntimeError)
+./features/step_definitions/gherkin_sample.rb:48:in `nil'
+features/gherkin_sample.feature:49:42:in `the cow weighs 451 kg']]>
+    </failure>
+    <system-out>
+      <![CDATA[]]>
+    </system-out>
+    <system-err>
+      <![CDATA[]]>
+    </system-err>
+  </testcase>
+  <testcase classname="Some terse yet descriptive text of what is desired like bla bla 3 examples" name="feeding a cow &lt;name&gt; yum yum yum (outline example : | cow2 | 500 | 29500 |)" time="0.007403">
+    <failure message="failed feeding a cow &lt;name&gt; yum yum yum (outline example : | cow2 | 500 | 29500 |)" type="failed">
+      <![CDATA[Scenario Outline: feeding a cow <name> yum yum yum
+
+Example row: | cow2 | 500 | 29500 |
+
+Message:
+]]>
+      <![CDATA[error (RuntimeError)
+./features/step_definitions/gherkin_sample.rb:48:in `nil'
+features/gherkin_sample.feature:50:42:in `the cow weighs 500 kg']]>
+    </failure>
+    <system-out>
+      <![CDATA[]]>
+    </system-out>
+    <system-err>
+      <![CDATA[]]>
+    </system-err>
+  </testcase>
+</testsuite>

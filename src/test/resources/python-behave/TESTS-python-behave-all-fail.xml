@@ -1,0 +1,209 @@
+<testsuite name="dealer.Some terse yet descriptive text of what is desired like bla bla" tests="4" errors="0" failures="4" skipped="0" time="0.022889" timestamp="2021-07-13T16:28:26.835848" hostname="ZZchenhaok01">
+  <testcase classname="dealer.Some terse yet descriptive text of what is desired like bla bla" name="Some determinable business situation" status="failed" time="0.009746">
+    <failure type="AssertionError" message="">
+      <![CDATA[
+Failing step: Then some testable outcome is achieved ... failed in 0.005s
+Location: features/dealer.feature:21
+Traceback (most recent call last):
+  File "c:\users\chenhaok.corpdom\appdata\local\programs\python\python39\lib\site-packages\behave\model.py", line 1329, in run
+    match.run(runner.context)
+  File "c:\users\chenhaok.corpdom\appdata\local\programs\python\python39\lib\site-packages\behave\matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "features\steps\steps.py", line 43, in step_impl
+    assert(1==0)
+AssertionError
+
+Captured stdout:
+STEP: Given a global administrator named "Greg"
+STEP: Given a blog named "Greg's anti-tax rants"
+STEP: Given a customer named "Wilson"
+<Row ['Aila', 'aila@email.com', '123']>
+<Row ['Joe', 'joe@email.com', '234']>
+STEP: Given some precondition 1
+STEP: When some action by the actor
+STEP: When some other action]]>
+    </failure>
+    <system-out>
+      <![CDATA[
+@scenario.begin
+
+  @Quick @full @annoy
+  Scenario: Some determinable business situation
+    Given a global administrator named "Greg" ... passed in 0.000s
+    * a blog named "Greg's anti-tax rants" ... passed in 0.001s
+    * a customer named "Wilson" ... passed in 0.000s
+    Given the following people exist ... passed in 0.000s
+      | name | email          | phone |
+      | Aila | aila@email.com | 123   |
+      | Joe  | joe@email.com  | 234   |
+    And some precondition 1 ... passed in 0.001s
+    When some action by the actor ... passed in 0.001s
+    And some other action ... passed in 0.001s
+    Then some testable outcome is achieved ... failed in 0.005s
+    And something else we can check happens too ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+STEP: Given a global administrator named "Greg"
+STEP: Given a blog named "Greg's anti-tax rants"
+STEP: Given a customer named "Wilson"
+<Row ['Aila', 'aila@email.com', '123']>
+<Row ['Joe', 'joe@email.com', '234']>
+STEP: Given some precondition 1
+STEP: When some action by the actor
+STEP: When some other action
+
+]]>
+    </system-out>
+  </testcase>
+  <testcase classname="dealer.Some terse yet descriptive text of what is desired like bla bla" name="Some another scenario 2" status="failed" time="0.005167">
+    <failure type="AssertionError" message="">
+      <![CDATA[
+Failing step: Then some testable outcome is achieved ... failed in 0.001s
+Location: features/dealer.feature:34
+Traceback (most recent call last):
+  File "c:\users\chenhaok.corpdom\appdata\local\programs\python\python39\lib\site-packages\behave\model.py", line 1329, in run
+    match.run(runner.context)
+  File "c:\users\chenhaok.corpdom\appdata\local\programs\python\python39\lib\site-packages\behave\matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "features\steps\steps.py", line 43, in step_impl
+    assert(1==0)
+AssertionError
+
+Captured stdout:
+STEP: Given a global administrator named "Greg"
+STEP: Given a blog named "Greg's anti-tax rants"
+STEP: Given a customer named "Wilson"
+STEP: Given some precondition
+STEP: Given some other precondition with doc string
+STEP: When some action by the actor
+STEP: When yet another action]]>
+    </failure>
+    <system-out>
+      <![CDATA[
+@scenario.begin
+
+  @Quick @nightly
+  Scenario: Some another scenario 2
+    Given a global administrator named "Greg" ... passed in 0.000s
+    * a blog named "Greg's anti-tax rants" ... passed in 0.001s
+    * a customer named "Wilson" ... passed in 0.001s
+    Given some precondition ... passed in 0.001s
+    And some other precondition with doc string ... passed in 0.001s
+      """
+      this is comment
+      """
+    When some action by the actor ... passed in 0.001s
+    And yet another action ... passed in 0.001s
+    Then some testable outcome is achieved ... failed in 0.001s
+    * something else we can check happens too ... skipped in 0.000s
+    But I don't see something else ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+STEP: Given a global administrator named "Greg"
+STEP: Given a blog named "Greg's anti-tax rants"
+STEP: Given a customer named "Wilson"
+STEP: Given some precondition
+STEP: Given some other precondition with doc string
+STEP: When some action by the actor
+STEP: When yet another action
+
+]]>
+    </system-out>
+  </testcase>
+  <testcase classname="dealer.Some terse yet descriptive text of what is desired like bla bla" name="feeding a cow cow1 yum yum yum -- @1.1 " status="failed" time="0.003967">
+    <failure type="AssertionError" message="">
+      <![CDATA[
+Failing step: Then the energy should be 26500 MJ ... failed in 0.001s
+Location: features/dealer.feature:44
+Traceback (most recent call last):
+  File "c:\users\chenhaok.corpdom\appdata\local\programs\python\python39\lib\site-packages\behave\model.py", line 1329, in run
+    match.run(runner.context)
+  File "c:\users\chenhaok.corpdom\appdata\local\programs\python\python39\lib\site-packages\behave\matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "features\steps\steps.py", line 96, in step_impl
+    assert(1==0)
+AssertionError
+
+Captured stdout:
+STEP: Given a global administrator named "Greg"
+STEP: Given a blog named "Greg's anti-tax rants"
+STEP: Given a customer named "Wilson"
+STEP: Given the cow weighs kg: 450
+STEP: When we calculate the feeding requirements]]>
+    </failure>
+    <system-out>
+      <![CDATA[
+@scenario.begin
+  Scenario Outline: feeding a cow cow1 yum yum yum -- @1.1 
+    Given a global administrator named "Greg" ... passed in 0.001s
+    * a blog named "Greg's anti-tax rants" ... passed in 0.001s
+    * a customer named "Wilson" ... passed in 0.000s
+    Given the cow weighs 450 kg ... passed in 0.000s
+    When we calculate the feeding requirements ... passed in 0.001s
+    Then the energy should be 26500 MJ ... failed in 0.001s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+STEP: Given a global administrator named "Greg"
+STEP: Given a blog named "Greg's anti-tax rants"
+STEP: Given a customer named "Wilson"
+STEP: Given the cow weighs kg: 450
+STEP: When we calculate the feeding requirements
+
+]]>
+    </system-out>
+  </testcase>
+  <testcase classname="dealer.Some terse yet descriptive text of what is desired like bla bla" name="feeding a cow cow2 yum yum yum -- @1.2 " status="failed" time="0.004009">
+    <failure type="AssertionError" message="">
+      <![CDATA[
+Failing step: Then the energy should be 29500 MJ ... failed in 0.001s
+Location: features/dealer.feature:44
+Traceback (most recent call last):
+  File "c:\users\chenhaok.corpdom\appdata\local\programs\python\python39\lib\site-packages\behave\model.py", line 1329, in run
+    match.run(runner.context)
+  File "c:\users\chenhaok.corpdom\appdata\local\programs\python\python39\lib\site-packages\behave\matchers.py", line 98, in run
+    self.func(context, *args, **kwargs)
+  File "features\steps\steps.py", line 96, in step_impl
+    assert(1==0)
+AssertionError
+
+Captured stdout:
+STEP: Given a global administrator named "Greg"
+STEP: Given a blog named "Greg's anti-tax rants"
+STEP: Given a customer named "Wilson"
+STEP: Given the cow weighs kg: 500
+STEP: When we calculate the feeding requirements]]>
+    </failure>
+    <system-out>
+      <![CDATA[
+@scenario.begin
+  Scenario Outline: feeding a cow cow2 yum yum yum -- @1.2 
+    Given a global administrator named "Greg" ... passed in 0.000s
+    * a blog named "Greg's anti-tax rants" ... passed in 0.001s
+    * a customer named "Wilson" ... passed in 0.000s
+    Given the cow weighs 500 kg ... passed in 0.001s
+    When we calculate the feeding requirements ... passed in 0.001s
+    Then the energy should be 29500 MJ ... failed in 0.001s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+STEP: Given a global administrator named "Greg"
+STEP: Given a blog named "Greg's anti-tax rants"
+STEP: Given a customer named "Wilson"
+STEP: Given the cow weighs kg: 500
+STEP: When we calculate the feeding requirements
+
+]]>
+    </system-out>
+  </testcase>
+</testsuite>

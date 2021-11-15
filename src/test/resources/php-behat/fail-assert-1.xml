@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="default">
+  <testsuite name="Some terse yet descriptive text of what is desired like bla bla" tests="4" skipped="0" failures="1" errors="0" time="0">
+    <testcase name="Some determinable business situation" classname="Some terse yet descriptive text of what is desired like bla bla" status="failed" time="0">
+      <failure message="And some precondition 1: This step failed so we skipped it"></failure>
+    </testcase>
+    <testcase name="Some another scenario 2 scenario 2 description" classname="Some terse yet descriptive text of what is desired like bla bla" status="passed" time="0"></testcase>
+    <testcase name="feeding a cow &lt;name&gt; yum yum yum&#10;scenario outline&#10;description #1" classname="Some terse yet descriptive text of what is desired like bla bla" status="passed" time="0"></testcase>
+    <testcase name="feeding a cow &lt;name&gt; yum yum yum&#10;scenario outline&#10;description #2" classname="Some terse yet descriptive text of what is desired like bla bla" status="passed" time="0"></testcase>
+  </testsuite>
+</testsuites>
