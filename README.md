@@ -24,22 +24,32 @@ The following frameworks are currently supported out-of-the-box:
 
 You can add your own framework by implementing the interface: [BddFrameworkHandler](./src/main/java/com/microfocus/bdd/api/BddFrameworkHandler.java)
 
-### Run as an executable-jar
+### There are two ways to invoke this tool:
+ 1. Run as an executable-jar
     
-   The CI admin downloads the .jar file and deploys it to the CI server nodes,
-   then creates a job to invoke the following command line: 
+    The CI admin downloads the .jar file and deploys it to the CI server nodes,
+    then creates a job to invoke the following command line: 
      
-   >**java -jar <path_to_the_jar> --reportFiles=<path_or_pattern> --featureFiles=<path_or_pattern> --framework=\<framework> --resultFile=\<path_to_result_file>**
+    >**java -jar <path_to_the_jar> --reportFiles=<path_or_pattern> --featureFiles=<path_or_pattern> --framework=\<framework> --resultFile=\<path_to_result_file>**
     
-   or a short version:
-   > **java -jar <path_to_the_jar> -rf=<path_or_pattern> -ff=<path_or_pattern> -f=\<framework> -r=\<path_to_result_file>**
+    or a short version:
+    > **java -jar <path_to_the_jar> -rf=<path_or_pattern> -ff=<path_or_pattern> -f=\<framework> -r=\<path_to_result_file>**
     
-   The --resultFile is optional. If not provided, the default result file is <*framework*>-result.xml. 
+    The --resultFile is optional. If not provided, the default result file is <*framework*>-result.xml. 
      
-   The following picture is a sample configuration of Jenkins in a Windows environment. As you can see, the second action consumes the result
-   file from the first action, cucumber-jvm-result.xml:
-   ![Run as jar](./run_as_jar.png)
+    The following picture is a sample configuration of Jenkins in a Windows environment. As you can see, the second action consumes the result
+    file from the first action, cucumber-jvm-result.xml:
+    ![Run as jar](./run_as_jar.png)
 
+ 2. Run as a Maven plugin
+
+    This tool is published in the Maven repository as a plugin. You can invoke the plugin by using a fully qualified plugin ID
+    or a short version. Unlike the previous way, the CI admin doesn't need to manually deploy the tool.
+
+    > **mvn bdd2octane:run -DreportFiles=<path_or_pattern> -DfeatureFiles=<path_or_pattern> -Dframework=\<framework> -DresultFile=<path_to_result_file>**
+
+    The following picture is a sample configuration of invoking a Maven target to run the plugin.
+    ![Run as mvn](./run_as_mvn.png)
 
 ### Notes on Cucumber-js handler
 
