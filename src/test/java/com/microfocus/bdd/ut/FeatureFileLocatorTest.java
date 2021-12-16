@@ -25,12 +25,18 @@ public class FeatureFileLocatorTest {
         String featureName = "Some terse yet descriptive text of what is desired like bla bla";
         String featureName01 = "Some terse yet descriptive text of what is desired: like bla bla01";
         String featureName02 = "Some terse yet descriptive text of what is desired like bla bla02";
+        String featureName03 = "Some terse yet descriptive text of what is desired like bla bla tag in comment";
         String featureNameInCN = "一个功能";
         String featureNameInDE = "Funktion";
+        String featureNameInDELanguageTag01 = "Funktion01";
+        String featureNameInDELanguageTag02 = "Funktion02";
         FeatureFileLocator featureFileLocator = new FeatureFileLocator(Arrays.asList(
                 "src/test/resources/features/robustgherkin.feature",
+                "src/test/resources/features/robustgherkin_language_tag_in_comment.feature",
                 "src/test/resources/features/robustgherkin_cn.feature",
                 "src/test/resources/features/robustgherkin_de.feature",
+                "src/test/resources/features/robustgherkin_de_language_tag_01.feature",
+                "src/test/resources/features/robustgherkin_de_language_tag_02.feature",
                 "src/test/resources/features/robustgherkin01.feature",
                 "src/test/resources/features/robustgherkin02.feature"));
         Assert.assertEquals("find robustgherkin.feature by name: " + featureName, "src/test/resources/features/robustgherkin.feature",
@@ -49,6 +55,12 @@ public class FeatureFileLocatorTest {
                 featureFileLocator.getFeatureFileMeta(featureNameInDE).getFeatureFile());
         Assert.assertEquals("find robustgherkin.feature language is " + GherkinMultiLingualService.DE_LANGUAGE, GherkinMultiLingualService.DE_LANGUAGE,
                 featureFileLocator.getFeatureFileMeta(featureNameInDE).getLanguage());
+        Assert.assertEquals("find robustgherkin.feature language is " + GherkinMultiLingualService.DE_LANGUAGE, GherkinMultiLingualService.DE_LANGUAGE,
+                featureFileLocator.getFeatureFileMeta(featureNameInDELanguageTag01).getLanguage());
+        Assert.assertEquals("find robustgherkin.feature language is " + GherkinMultiLingualService.DE_LANGUAGE, GherkinMultiLingualService.DE_LANGUAGE,
+                featureFileLocator.getFeatureFileMeta(featureNameInDELanguageTag02).getLanguage());
+        Assert.assertEquals("find robustgherkin.feature language is " + GherkinMultiLingualService.DEFAULT_LANGUAGE, GherkinMultiLingualService.DEFAULT_LANGUAGE,
+                featureFileLocator.getFeatureFileMeta(featureName03).getLanguage());
     }
 
     @Test

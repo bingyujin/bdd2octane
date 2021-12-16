@@ -17,6 +17,7 @@ import io.cucumber.gherkin.GherkinDialectProvider;
 
 import java.io.*;
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -117,7 +118,7 @@ public class FeatureFileLocator {
     private Optional<FeatureFileMeta> tryToGetFeatureFileMeta(String featureName, String featureFile) throws IOException {
         FeatureFileMeta featureFileMeta = new FeatureFileMeta(featureFile, GherkinMultiLingualService.DEFAULT_LANGUAGE);
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(featureFile), "UTF8"));
-
+        Pattern pattern = Pattern.compile("^#\\s*language");
 
         List<String> translatedFeatureNames;
         while (true) {
@@ -125,7 +126,7 @@ public class FeatureFileLocator {
             if (line == null) {
                 break;
             }
-            if (line.contains("# language")) {
+            if (pattern.matcher(line).find()) {
                 parseLanguage(line).ifPresent(lang -> featureFileMeta.setLanguage(lang));
                 continue;
             }
