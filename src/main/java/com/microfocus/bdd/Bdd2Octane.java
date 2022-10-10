@@ -97,14 +97,10 @@ public class Bdd2Octane {
                     }
                 }
 
-                if (previousFeature != null) {
-                    if (previousFeature != octaneFeature) {
+                if (previousFeature != null && previousFeature != octaneFeature) {
                         writeFeatureToXML(writer, previousFeature);
-                        previousFeature = null;
-                    }
-                } else {
-                    previousFeature = octaneFeature;
                 }
+                previousFeature = octaneFeature;
 
                 //2. get scenarioName
                 String scenarioName = bddFrameworkHandler.getScenarioName(octaneFeature);
