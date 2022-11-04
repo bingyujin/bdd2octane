@@ -63,36 +63,36 @@ java.lang.AssertionError
                 errorMessage = child.getText();
                 String lastLine = findLastNonEmptyLine(errorMessage);
                 if (lastLine.startsWith("at ✽.")) {
-                    int startOfFileLocation = lastLine.lastIndexOf("(");
-                    failedStep = lastLine.substring(5, startOfFileLocation);
-                    featureFile = lastLine.substring(startOfFileLocation + 1, lastLine.lastIndexOf(')'));
-                    int lineNumIndex = featureFile.lastIndexOf(':');
-                    failedLineNum = featureFile.substring(lineNumIndex + 1);
-                    featureFile = featureFile.substring(0, lineNumIndex);
+                    extractFeatureFilePath(lastLine);
                 } else {
-                    element.getChild("system-out").ifPresent(out -> {
-                        errorMessage = out.getText();
-                        String failedLine = null;
-                        int indexOfPeriod = 0;
-                        for (String line: getLinesBottomUp(errorMessage)) {
-                            if (line.startsWith("at ") && line.endsWith(")")) {
-                                indexOfPeriod = line.indexOf('.');
-                                if (indexOfPeriod != -1) {
-                                    failedLine = line;
-                                    break;
+                    Optional<String> optionalString = findFirstStarLine(errorMessage);
+                    if (optionalString.isPresent()) {
+                        extractFeatureFilePath(optionalString.get());
+                    } else {
+                        element.getChild("system-out").ifPresent(out -> {
+                            errorMessage = out.getText();
+                            String failedLine = null;
+                            int indexOfPeriod = 0;
+                            for (String line : getLinesBottomUp(errorMessage)) {
+                                if (line.startsWith("at ") && line.endsWith(")")) {
+                                    indexOfPeriod = line.indexOf('.');
+                                    if (indexOfPeriod != -1) {
+                                        failedLine = line;
+                                        break;
+                                    }
                                 }
                             }
-                        }
-                        if (failedLine == null) {
-                            return;
-                        }
-                        int startOfFileLocation = failedLine.lastIndexOf("(");
-                        failedStep = failedLine.substring(indexOfPeriod + 1, startOfFileLocation);
-                        featureFile = failedLine.substring(startOfFileLocation + 1, failedLine.lastIndexOf(')'));
-                        int lineNumIndex = featureFile.lastIndexOf(':');
-                        failedLineNum = featureFile.substring(lineNumIndex + 1);
-                        featureFile = featureFile.substring(0, lineNumIndex);
-                    });
+                            if (failedLine == null) {
+                                return;
+                            }
+                            int startOfFileLocation = failedLine.lastIndexOf("(");
+                            failedStep = failedLine.substring(indexOfPeriod + 1, startOfFileLocation);
+                            featureFile = failedLine.substring(startOfFileLocation + 1, failedLine.lastIndexOf(')'));
+                            int lineNumIndex = featureFile.lastIndexOf(':');
+                            failedLineNum = featureFile.substring(lineNumIndex + 1);
+                            featureFile = featureFile.substring(0, lineNumIndex);
+                        });
+                    }
                 }
             } else if (childName.equals("skipped")) {
                 isSkipped = true;
@@ -109,8 +109,30 @@ java.lang.AssertionError
         return null;
     }
 
+    private Optional<String> findFirstStarLine(String message) {
+        for (String line : getLines(message)) {
+            if (line.startsWith("at ✽.")) {
+                return Optional.of(line);
+            }
+        }
+        return Optional.empty();
+    }
+
     private Iterable<String> getLinesBottomUp(String message) {
         return () -> new LinesBottomUpIterator(message);
+    }
+
+    private Iterable<String> getLines(String message) {
+        return () -> new LinesIterator(message);
+    }
+
+    private void extractFeatureFilePath(String line) {
+        int startOfFileLocation = line.lastIndexOf("(");
+        failedStep = line.substring(5, startOfFileLocation);
+        featureFile = line.substring(startOfFileLocation + 1, line.lastIndexOf(')'));
+        int lineNumIndex = featureFile.lastIndexOf(':');
+        failedLineNum = featureFile.substring(lineNumIndex + 1);
+        featureFile = featureFile.substring(0, lineNumIndex);
     }
 
     @Override
