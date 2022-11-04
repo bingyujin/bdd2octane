@@ -56,7 +56,9 @@ public class Bdd2OctaneHandlerITCase extends Bdd2OctaneITCase {
                 //2 discrete junit reports + 1 unrelated junit report
                 {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/separate-test3/*.xml", "src/test/resources/features/*.feature", "separateResults/cucumber-jvm-final3.xml", "**/separateResults/standard-cucumber-jvm-final3.xml"},
                 //1 junit report + 2 feature files
-                {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/separate-test4/junit.xml", "src/test/resources/features/separate_test4*.feature", "separateResults/cucumber-jvm-final4.xml", "**/separateResults/standard-cucumber-jvm-final4.xml"}
+                {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/separate-test4/junit.xml", "src/test/resources/features/separate_test4*.feature", "separateResults/cucumber-jvm-final4.xml", "**/separateResults/standard-cucumber-jvm-final4.xml"},
+                //1 junit report + 3 feature files
+                {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/separate-test5/junit.xml", "src/test/resources/features/MyAccount*.feature", "separateResults/cucumber-jvm-final5.xml", "**/separateResults/standard-cucumber-jvm-final5.xml"}
 
         });
 
