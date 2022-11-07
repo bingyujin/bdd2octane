@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <testsuite errors="0" failures="7" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="31" time="884.541">
+    <testcase classname="MyAccountFooterUIValidations" name="Verify Footer - Important Information About Us Hyperlink" time="157.348">
+        <failure message="Expected condition failed: waiting for com.hastings.automation.function.pageaction.webpageaction.ClickAction$1@7b93d7e1 (tried for 30 second(s) with 200 milliseconds interval)" type="org.openqa.selenium.TimeoutException"><![CDATA[Given User login into My Account with Multi Product Policies................passed
+When User clicks on "Important Information About Us" link in My Account Footer.failed
+Then User should be navigated to the respective footer page.................skipped
 
+StackTrace:
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for com.hastings.automation.function.pageaction.webpageaction.ClickAction$1@7b93d7e1 (tried for 30 second(s) with 200 milliseconds interval)
+	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:263)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
+	at com.hastings.automation.function.pageaction.webpageaction.ClickAction.waitAndClickElement(ClickAction.java:45)
+	at com.hastings.automation.function.ui.pageobjects.digital.reactmyaccount.MaReactMarketingPreferenceOverlayPage.clickMarketingPreferenceCloseButton(MaReactMarketingPreferenceOverlayPage.java:68)
+	at com.hastings.automation.automationtest.bdd.definitions.stepdefinitions.digital.digitalsteps.MyAccountReactSteps.userClickOnFooterLink(MyAccountReactSteps.java:179)
+	at ✽.User clicks on "Important Information About Us" link in My Account Footer(classpath:src/test/resources/features/MyAccountFooterUIValidations.feature:51)
+]]></failure>
+    </testcase>
     <testcase classname="MyAccountFooterUIValidations" name="Verify Footer - Our Fees Hyperlink" time="172.683">
         <failure message="Expected condition failed: waiting for com.hastings.automation.function.pageaction.webpageaction.ClickAction$1@149b6966 (tried for 30 second(s) with 200 milliseconds interval)" type="org.openqa.selenium.TimeoutException"><![CDATA[Given User logs into My Account with a policy...............................passed
 When User clicks on "Our Fees" link in My Account Footer....................failed
@@ -107,19 +121,5 @@ Then User should be presented with Help us go green modal overlay...........pass
 ]]></system-out>
     </testcase>
 
-    <testcase classname="MyAccountFooterUIValidations" name="Verify Footer - Important Information About Us Hyperlink" time="157.348">
-        <failure message="Expected condition failed: waiting for com.hastings.automation.function.pageaction.webpageaction.ClickAction$1@7b93d7e1 (tried for 30 second(s) with 200 milliseconds interval)" type="org.openqa.selenium.TimeoutException"><![CDATA[Given User login into My Account with Multi Product Policies................passed
-When User clicks on "Important Information About Us" link in My Account Footer.failed
-Then User should be navigated to the respective footer page.................skipped
 
-StackTrace:
-org.openqa.selenium.TimeoutException: Expected condition failed: waiting for com.hastings.automation.function.pageaction.webpageaction.ClickAction$1@7b93d7e1 (tried for 30 second(s) with 200 milliseconds interval)
-	at org.openqa.selenium.support.ui.FluentWait.timeoutException(FluentWait.java:263)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
-	at com.hastings.automation.function.pageaction.webpageaction.ClickAction.waitAndClickElement(ClickAction.java:45)
-	at com.hastings.automation.function.ui.pageobjects.digital.reactmyaccount.MaReactMarketingPreferenceOverlayPage.clickMarketingPreferenceCloseButton(MaReactMarketingPreferenceOverlayPage.java:68)
-	at com.hastings.automation.automationtest.bdd.definitions.stepdefinitions.digital.digitalsteps.MyAccountReactSteps.userClickOnFooterLink(MyAccountReactSteps.java:179)
-	at ✽.User clicks on "Important Information About Us" link in My Account Footer(classpath:src/test/resources/features/MyAccountFooterUIValidations.feature:51)
-]]></failure>
-    </testcase>
 </testsuite>
