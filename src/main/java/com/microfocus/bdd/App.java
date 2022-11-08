@@ -45,7 +45,7 @@ public class App {
                 return properties.getProperty(param);
             }
         }
-        System.err.println("Parameter can not be missing. You can use either " + parameters[0] + " or " + parameters[1] + " for short.");
+        System.err.println("Parameter " + parameters[0] + " or " + parameters[1] + " is missing");
         printArgumentMessage();
         System.exit(1);
         return null;
