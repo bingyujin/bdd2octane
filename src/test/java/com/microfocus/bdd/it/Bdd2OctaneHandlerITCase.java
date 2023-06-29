@@ -58,7 +58,11 @@ public class Bdd2OctaneHandlerITCase extends Bdd2OctaneITCase {
                 //1 junit report + 2 feature files
                 {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/separate-test4/junit.xml", "src/test/resources/features/separate_test4*.feature", "separateResults/cucumber-jvm-final4.xml", "**/separateResults/standard-cucumber-jvm-final4.xml"},
                 //1 junit report + 3 feature files
-                {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/separate-test5/junit.xml", "src/test/resources/features/MyAccount*.feature", "separateResults/cucumber-jvm-final5.xml", "**/separateResults/standard-cucumber-jvm-final5.xml"}
+                {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/separate-test5/junit.xml", "src/test/resources/features/MyAccount*.feature", "separateResults/cucumber-jvm-final5.xml", "**/separateResults/standard-cucumber-jvm-final5.xml"},
+
+                {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/separate-test6/junit.xml", "src/test/resources/features/Calculator.feature", "separateResults/cucumber-jvm-final6.xml", "**/separateResults/standard-cucumber-jvm-final6.xml"},
+
+                {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/space_feature_file/junit.xml", "src/test/resources/features/Check*.feature", "separateResults/cucumber-jvm-final7.xml", "**/separateResults/standard-cucumber-jvm-final7.xml"}
 
         });
 
