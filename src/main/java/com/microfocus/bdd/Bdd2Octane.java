@@ -169,14 +169,14 @@ public class Bdd2Octane {
                         throw new RuntimeException(e);
                     }
                 } else if (featureFile.startsWith("file:")) {
-                    return Paths.get(URLDecoder.decode(f,UTF_8)).endsWith(URLDecoder.decode(featureFile.substring(5), UTF_8));
+                    return Paths.get(URLDecoder.decode(f,StandardCharsets.UTF_8.toString())).endsWith(URLDecoder.decode(featureFile.substring(5), StandardCharsets.UTF_8.toString()));
                 } else if (featureFile.startsWith("classpath:")) {
-                    return Paths.get(URLDecoder.decode(f,UTF_8)).endsWith(URLDecoder.decode(featureFile.substring(10), UTF_8));
+                    return Paths.get(URLDecoder.decode(f,StandardCharsets.UTF_8.toString())).endsWith(URLDecoder.decode(featureFile.substring(10), StandardCharsets.UTF_8.toString()));
                 } else {
-                    return Paths.get(URLDecoder.decode(f,UTF_8)).endsWith(URLDecoder.decode(featureFile, UTF_8));
+                    return Paths.get(URLDecoder.decode(f,StandardCharsets.UTF_8.toString())).endsWith(URLDecoder.decode(featureFile, StandardCharsets.UTF_8.toString()));
                 }
-            }catch (IllegalArgumentException e){
-                System.err.println("Failed to decode feature file from report. feature file:" +featureFile);
+            }catch (IllegalArgumentException | UnsupportedEncodingException e){
+                System.err.println("Failed to decode feature file from report. feature file:" +featureFile + ", error: " + e.getMessage());
             }
             return false;
         }).findFirst();
