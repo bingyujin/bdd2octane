@@ -18,9 +18,12 @@ import javax.xml.stream.XMLStreamWriter;
 import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.*;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 
 public class Bdd2Octane {
@@ -157,20 +160,25 @@ public class Bdd2Octane {
 
     private Optional<String> canonicalizeFilePath(String featureFile) {
         return featureFiles.stream().filter(f -> {
-            if (featureFile.startsWith("file:///")) {
-                try {
-                    URI uri = new URI(featureFile);
-                    return Paths.get(f).toUri().equals(uri);
-                } catch (URISyntaxException e) {
-                    throw new RuntimeException(e);
+            try {
+                if (featureFile.startsWith("file:///")) {
+                    try {
+                        URI uri = new URI(featureFile);
+                        return Paths.get(f).toUri().equals(uri);
+                    } catch (URISyntaxException e) {
+                        throw new RuntimeException(e);
+                    }
+                } else if (featureFile.startsWith("file:")) {
+                    return Paths.get(URLDecoder.decode(f,StandardCharsets.UTF_8.toString())).endsWith(URLDecoder.decode(featureFile.substring(5), StandardCharsets.UTF_8.toString()));
+                } else if (featureFile.startsWith("classpath:")) {
+                    return Paths.get(URLDecoder.decode(f,StandardCharsets.UTF_8.toString())).endsWith(URLDecoder.decode(featureFile.substring(10), StandardCharsets.UTF_8.toString()));
+                } else {
+                    return Paths.get(URLDecoder.decode(f,StandardCharsets.UTF_8.toString())).endsWith(URLDecoder.decode(featureFile, StandardCharsets.UTF_8.toString()));
                 }
-            } else if (featureFile.startsWith("file:")) {
-                return Paths.get(f).endsWith(featureFile.substring(5));
-            } else if (featureFile.startsWith("classpath:")) {
-                return Paths.get(f).endsWith(featureFile.substring(10));
-            } else {
-                return Paths.get(f).endsWith(featureFile);
+            }catch (IllegalArgumentException | UnsupportedEncodingException e){
+                System.err.println("Failed to decode feature file from report. feature file:" +featureFile + ", error: " + e.getMessage());
             }
+            return false;
         }).findFirst();
     }
 
