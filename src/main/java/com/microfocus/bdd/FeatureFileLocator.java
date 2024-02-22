@@ -140,9 +140,9 @@ public class FeatureFileLocator {
 
     private Optional<FeatureFileMeta> tryToGetFeatureFileMeta(String featureName, String featureFile) throws IOException {
         FeatureFileMeta featureFileMeta = new FeatureFileMeta(featureFile, GherkinMultiLingualService.DEFAULT_LANGUAGE);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(featureFile), "UTF8"));
+        // BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(featureFile), "UTF8"));
         Pattern pattern = Pattern.compile("^#\\s*language");
-
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(featureFile), "UTF8"))) {
         List<String> translatedFeatureNames;
         while (true) {
             String line = reader.readLine();
@@ -170,6 +170,7 @@ public class FeatureFileLocator {
                 }
                 break;
             }
+        }
         }
         return Optional.empty();
     }
