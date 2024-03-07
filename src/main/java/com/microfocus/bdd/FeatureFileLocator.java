@@ -140,35 +140,36 @@ public class FeatureFileLocator {
 
     private Optional<FeatureFileMeta> tryToGetFeatureFileMeta(String featureName, String featureFile) throws IOException {
         FeatureFileMeta featureFileMeta = new FeatureFileMeta(featureFile, GherkinMultiLingualService.DEFAULT_LANGUAGE);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(featureFile), "UTF8"));
         Pattern pattern = Pattern.compile("^#\\s*language");
 
-        List<String> translatedFeatureNames;
-        while (true) {
-            String line = reader.readLine();
-            if (line == null) {
-                break;
-            }
-            if (pattern.matcher(line).find()) {
-                parseLanguage(line).ifPresent(lang -> featureFileMeta.setLanguage(lang));
-                continue;
-            }
-            if (line.startsWith("#")) {
-                continue;
-            }
-            translatedFeatureNames = new GherkinDialectProvider(featureFileMeta.getLanguage())
-                    .getDialect(featureFileMeta.getLanguage(), null).getFeatureKeywords();
-            if (translatedFeatureNames.stream().anyMatch(line::contains)) {
-                String[] featureNamePattern = line.split(":", 2);
-                if (featureNamePattern.length >= 2) {
-                    String fName = featureNamePattern[1].trim();
-                    featureNameToFeatureFileMetaMap.putIfAbsent(fName, featureFileMeta);
-                    featureFiles.remove(fName);
-                    if (fName.equals(featureName)) {
-                        return Optional.of(featureFileMeta);
-                    }
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(featureFile), "UTF8"))) {
+            List<String> translatedFeatureNames;
+            while (true) {
+                String line = reader.readLine();
+                if (line == null) {
+                    break;
                 }
-                break;
+                if (pattern.matcher(line).find()) {
+                    parseLanguage(line).ifPresent(lang -> featureFileMeta.setLanguage(lang));
+                    continue;
+                }
+                if (line.startsWith("#")) {
+                    continue;
+                }
+                translatedFeatureNames = new GherkinDialectProvider(featureFileMeta.getLanguage())
+                        .getDialect(featureFileMeta.getLanguage(), null).getFeatureKeywords();
+                if (translatedFeatureNames.stream().anyMatch(line::contains)) {
+                    String[] featureNamePattern = line.split(":", 2);
+                    if (featureNamePattern.length >= 2) {
+                        String fName = featureNamePattern[1].trim();
+                        featureNameToFeatureFileMetaMap.putIfAbsent(fName, featureFileMeta);
+                        featureFiles.remove(fName);
+                        if (fName.equals(featureName)) {
+                            return Optional.of(featureFileMeta);
+                        }
+                    }
+                    break;
+                }
             }
         }
         return Optional.empty();
