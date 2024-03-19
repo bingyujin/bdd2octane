@@ -85,7 +85,11 @@ public class Bdd2OctaneHandlerITCase extends Bdd2OctaneITCase {
 
                 {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/separate-test6/junit.xml", "src/test/resources/features/Calculator.feature", "separateResults/cucumber-jvm-final6.xml", "**/separateResults/standard-cucumber-jvm-final6.xml"},
 
-                {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/space_feature_file/junit.xml", "src/test/resources/features/Check*.feature", "separateResults/cucumber-jvm-final7.xml", "**/separateResults/standard-cucumber-jvm-final7.xml"}
+                {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/space_feature_file/junit.xml", "src/test/resources/features/Check*.feature", "separateResults/cucumber-jvm-final7.xml", "**/separateResults/standard-cucumber-jvm-final7.xml"},
+                //testng cases
+                {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/testng/testng-before-test-failed-all-steps-skipped.xml", "src/test/resources/features/applicationLogin.feature", "separateResults/cucumber-jvm-final8.xml", "**/separateResults/standard-cucumber-jvm-final8.xml"},
+                {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/testng/testng-first-step-passed-second-step-undefined.xml", "src/test/resources/features/applicationLogin.feature", "separateResults/cucumber-jvm-final9.xml", "**/separateResults/standard-cucumber-jvm-final9.xml"},
+                {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/testng/testng-first-step-undefined.xml", "src/test/resources/features/applicationLogin.feature", "separateResults/cucumber-jvm-final10.xml", "**/separateResults/standard-cucumber-jvm-final10.xml"}
 
         });
 

@@ -32,16 +32,19 @@
 package com.microfocus.bdd;
 
 
-import com.microfocus.bdd.api.*;
+ import com.microfocus.bdd.api.*;
 
-import java.util.Iterator;
-import java.util.Optional;
+ import java.util.Optional;
+ import java.util.regex.Matcher;
+ import java.util.regex.Pattern;
 
 public class CucumberJvmHandler implements BddFrameworkHandler {
 
     private Element element;
     private String errorMessage;
     private String failedStep;
+    private String failureMessage;
+    private String failureType;
     private String featureFile;
     private String failedLineNum;
     private boolean isSkipped = false;
@@ -84,6 +87,8 @@ java.lang.AssertionError
                  */
 
                 errorMessage = child.getText();
+                failureMessage = child.getAttribute("message");
+                failureType = child.getAttribute("type");
                 String lastLine = findLastNonEmptyLine(errorMessage);
                 if (lastLine.startsWith("at ✽.") || lastLine.startsWith("at ?.")) {
                     extractFeatureFilePath(lastLine);
@@ -92,8 +97,10 @@ java.lang.AssertionError
                     if (optionalString.isPresent()) {
                         extractFeatureFilePath(optionalString.get());
                     } else {
-                        element.getChild("system-out").ifPresent(out -> {
-                            errorMessage = out.getText();
+                        Optional<Element> optionalSystemOut = element.getChild("system-out");
+                        if (optionalSystemOut.isPresent()) {
+                            Element systemOut = optionalSystemOut.get();
+                            errorMessage = systemOut.getText();
                             String failedLine = null;
                             int indexOfPeriod = 0;
                             for (String line : getLinesBottomUp(errorMessage)) {
@@ -114,7 +121,10 @@ java.lang.AssertionError
                             int lineNumIndex = featureFile.lastIndexOf(':');
                             failedLineNum = featureFile.substring(lineNumIndex + 1);
                             featureFile = featureFile.substring(0, lineNumIndex);
-                        });
+                        } else if (failureMessage != null && failureType != null) {
+                            failedStep = findFirstUndefinedLine(errorMessage);
+                        }
+
                     }
                 }
             } else if (childName.equals("skipped")) {
@@ -139,6 +149,20 @@ java.lang.AssertionError
             }
         }
         return Optional.empty();
+    }
+
+    private String findFirstUndefinedLine(String message) {
+        for (String line : getLines(message)) {
+            Pattern pattern = Pattern.compile("^\\w+\\s*");
+            if (line.endsWith("undefined")) {
+                Matcher matcher = pattern.matcher(line.split("\\.*undefined$")[0]);
+                return matcher.replaceFirst("");
+            } else if (line.endsWith("skipped")) {
+                Matcher matcher = pattern.matcher(line.split("\\.*skipped$")[0]);
+                return matcher.replaceFirst("");
+            }
+        }
+        return null;
     }
 
     private Iterable<String> getLinesBottomUp(String message) {
@@ -226,7 +250,11 @@ java.lang.AssertionError
         }
         if (octaneStep.getName().equals(failedStep)) {
             octaneStep.setStatus(Status.FAILED);
-            octaneStep.setErrorMessage(errorMessage);
+            if (errorMessage.contains(failureMessage) && errorMessage.contains(failureType)) {
+                octaneStep.setErrorMessage(errorMessage);
+            } else {
+                octaneStep.setErrorMessage("\n" + failureType + "\n" + failureMessage + "\n" + errorMessage);
+            }
         } else {
             octaneStep.setStatus(Status.PASSED);
         }
