@@ -89,7 +89,12 @@ public class Bdd2OctaneHandlerITCase extends Bdd2OctaneITCase {
                 //testng cases
                 {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/testng/testng-before-test-failed-all-steps-skipped.xml", "src/test/resources/features/applicationLogin.feature", "separateResults/cucumber-jvm-final8.xml", "**/separateResults/standard-cucumber-jvm-final8.xml"},
                 {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/testng/testng-first-step-passed-second-step-undefined.xml", "src/test/resources/features/applicationLogin.feature", "separateResults/cucumber-jvm-final9.xml", "**/separateResults/standard-cucumber-jvm-final9.xml"},
-                {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/testng/testng-first-step-undefined.xml", "src/test/resources/features/applicationLogin.feature", "separateResults/cucumber-jvm-final10.xml", "**/separateResults/standard-cucumber-jvm-final10.xml"}
+                {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/testng/testng-first-step-undefined.xml", "src/test/resources/features/applicationLogin.feature", "separateResults/cucumber-jvm-final10.xml", "**/separateResults/standard-cucumber-jvm-final10.xml"},
+                //junit5 scenario outline cases
+                {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/3outlines/junit5_scenario_outline1.xml", "src/test/resources/features/robustgherkin_has_3_examples.feature", "separateResults/cucumber-jvm-final11.xml", "**/separateResults/standard-cucumber-jvm-final11.xml"},
+                {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/3outlines/junit5_scenario_outline2.xml", "src/test/resources/features/robustgherkin_has_3_examples.feature", "separateResults/cucumber-jvm-final12.xml", "**/separateResults/standard-cucumber-jvm-final12.xml"},
+                {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/3outlines/junit5_scenario_contain_hyphen_outline3.xml", "src/test/resources/features/robustgherkin_has_3_examples_feature_scenario_name_contain_hyphen.feature", "separateResults/cucumber-jvm-final13.xml", "**/separateResults/standard-cucumber-jvm-final13.xml"},
+                {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/3outlines/junit5_scenario_contain_hyphen_outline4.xml", "src/test/resources/features/robustgherkin_has_3_examples_feature_scenario_name_contain_hyphen.feature", "separateResults/cucumber-jvm-final14.xml", "**/separateResults/standard-cucumber-jvm-final14.xml"}
 
         });
 

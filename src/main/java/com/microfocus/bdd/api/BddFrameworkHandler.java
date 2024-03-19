@@ -31,7 +31,9 @@
  */
 package com.microfocus.bdd.api;
 
-import java.util.Optional;
+ import com.microfocus.bdd.OctaneFeatureLocator;
+
+ import java.util.Optional;
 
 public interface BddFrameworkHandler {
 
@@ -52,7 +54,7 @@ public interface BddFrameworkHandler {
      *  This method is supposed to extract feature name from XML element
      * @return the feature name optionally. If it is empty, this XML element is skipped and an error message is printed.
      */
-    Optional<String> getFeatureName();
+    Optional<String> getFeatureName(OctaneFeatureLocator... octaneFeatureLocator);
 
     /**
      *  This method is supposed to extract feature file name from XML element. It is treated a shortcut to location the
@@ -68,7 +70,7 @@ public interface BddFrameworkHandler {
      * @param feature, the OctaneFeature
      * @return the scenario name
      */
-    String getScenarioName(OctaneFeature feature);
+    String getScenarioName(OctaneFeature feature, OctaneFeatureLocator... octaneFeatureLocator);
 
     /**
      *  This method is invoked to get back the status of the OctaneStep, the implementation should set correct Status

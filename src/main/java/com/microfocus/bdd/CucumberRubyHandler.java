@@ -44,7 +44,7 @@ public class CucumberRubyHandler implements BddFrameworkHandler {
     private Status statusTag;
 
     @Override
-    public String getScenarioName(OctaneFeature feature) {
+    public String getScenarioName(OctaneFeature feature, OctaneFeatureLocator... octaneFeatureLocator){
         String testcaseNameInReport = element.getAttribute("name");
         String[] nameParts = testcaseNameInReport.split("\\(outline example", 2);
         if (nameParts.length == 2) {
@@ -147,7 +147,7 @@ features/gherkin_sample.feature:48:42:in `the cow weighs 450 kg']]>
     }
 
     @Override
-    public Optional<String> getFeatureName() {
+    public Optional<String> getFeatureName(OctaneFeatureLocator... octaneFeatureLocator) {
         return Optional.ofNullable(element.getAttribute("classname"));
     }
 

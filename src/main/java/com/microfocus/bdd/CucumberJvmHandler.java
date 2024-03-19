@@ -32,11 +32,13 @@
 package com.microfocus.bdd;
 
 
- import com.microfocus.bdd.api.*;
+import com.microfocus.bdd.api.*;
+import io.cucumber.messages.types.FeatureChild;
 
- import java.util.Optional;
- import java.util.regex.Matcher;
- import java.util.regex.Pattern;
+import java.io.IOException;
+import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CucumberJvmHandler implements BddFrameworkHandler {
 
@@ -183,10 +185,26 @@ java.lang.AssertionError
     }
 
     @Override
-    public Optional<String> getFeatureName() {
+    public Optional<String> getFeatureName(OctaneFeatureLocator... octaneFeatureLocator) {
         String classname = element.getAttribute("classname");
         if (classname.isEmpty() || classname.equals("EMPTY_NAME") || classname.equals("Unknown")) {
             return Optional.empty();
+        }
+        if (octaneFeatureLocator != null && octaneFeatureLocator.length > 0) {
+            Optional<OctaneFeature> octaneFeatureOpt;
+            String classnamePart = classname;
+            while (classnamePart.contains("-")) {
+                int lastIndex = classnamePart.lastIndexOf("-");
+                classnamePart = classnamePart.substring(0, lastIndex).trim();
+                try {
+                    octaneFeatureOpt = octaneFeatureLocator[0].getOctaneFeatureByName(classnamePart);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                if (octaneFeatureOpt.isPresent()) {
+                    return Optional.of(classnamePart);
+                }
+            }
         }
         return Optional.of(classname);
     }
@@ -197,7 +215,7 @@ java.lang.AssertionError
     }
 
     @Override
-    public String getScenarioName(OctaneFeature feature) {
+    public String getScenarioName(OctaneFeature feature, OctaneFeatureLocator... octaneFeatureLocator) {
         String sceName = element.getAttribute("name");
         if (!feature.getScenarios(sceName).isEmpty()) {
             return sceName;
@@ -205,6 +223,31 @@ java.lang.AssertionError
         for (OctaneScenario sce : feature.getScenarios()) {
             if (sceName.startsWith(sce.getOutlineName())) {
                 return (sce.getName());
+            }
+        }
+        if (octaneFeatureLocator != null && octaneFeatureLocator.length != 0) {
+            Optional<String> featureNameOpt = getFeatureName(octaneFeatureLocator);
+            if (featureNameOpt.isPresent()) {
+                String featureName = featureNameOpt.get();
+                if (sceName.startsWith(featureName + " - ")) {
+                    sceName = sceName.split(featureName + " - ")[1].trim();
+                }
+                String sceNamePart = sceName;
+                while (sceNamePart.contains("-")) {
+                    int lastIndex = sceNamePart.lastIndexOf("-");
+                    sceNamePart = sceNamePart.substring(0, lastIndex).trim();
+                    String finalSceNamePart = sceNamePart;
+                    Optional<FeatureChild> child = feature.getGherkinDocument().getFeature().getChildren().stream()
+                            .filter(featureChild -> featureChild.getScenario() != null && featureChild.getScenario().getName().equals(finalSceNamePart)).findFirst();
+                    if (child.isPresent()) {
+                        if (child.get().getScenario().getExamples().isEmpty()) {
+                            return sceName;
+                        } else {
+                            return sceNamePart;
+                        }
+                    }
+                }
+                return sceName;
             }
         }
         return null;
@@ -250,7 +293,7 @@ java.lang.AssertionError
         }
         if (octaneStep.getName().equals(failedStep)) {
             octaneStep.setStatus(Status.FAILED);
-            if (errorMessage.contains(failureMessage) && errorMessage.contains(failureType)) {
+            if (failureMessage != null && failureType != null && errorMessage.contains(failureMessage) && errorMessage.contains(failureType)) {
                 octaneStep.setErrorMessage(errorMessage);
             } else {
                 octaneStep.setErrorMessage("\n" + failureType + "\n" + failureMessage + "\n" + errorMessage);

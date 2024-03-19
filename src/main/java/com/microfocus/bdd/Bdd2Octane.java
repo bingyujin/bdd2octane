@@ -99,7 +99,7 @@ public class Bdd2Octane {
                         continue;
                     }
                 } else {
-                    Optional<String> featureNameOpt = bddFrameworkHandler.getFeatureName();
+                    Optional<String> featureNameOpt = bddFrameworkHandler.getFeatureName(octaneFeatureLocator);
                     if (featureNameOpt.isPresent() && !featureNameOpt.get().isEmpty()) {
                         String featureName = featureNameOpt.get();
                         Optional<OctaneFeature> octaneFeatureOpt = octaneFeatureLocator.getOctaneFeatureByName(featureName);
@@ -129,7 +129,7 @@ public class Bdd2Octane {
                 previousFeature = octaneFeature;
 
                 //2. get scenarioName
-                String scenarioName = bddFrameworkHandler.getScenarioName(octaneFeature);
+                String scenarioName = bddFrameworkHandler.getScenarioName(octaneFeature, octaneFeatureLocator);
                 if (Strings.isNullOrEmpty(scenarioName)) {
                     System.err.println(bddFrameworkHandler.getClass().getSimpleName()
                             + " cannot extract a scenario out of XML " + file + ":" + testCaseElement.getLineNum() + "\n"
