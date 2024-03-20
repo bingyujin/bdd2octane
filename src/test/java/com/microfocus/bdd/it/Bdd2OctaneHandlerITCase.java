@@ -94,7 +94,8 @@ public class Bdd2OctaneHandlerITCase extends Bdd2OctaneITCase {
                 {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/3outlines/junit5_scenario_outline1.xml", "src/test/resources/features/robustgherkin_has_3_examples.feature", "separateResults/cucumber-jvm-final11.xml", "**/separateResults/standard-cucumber-jvm-final11.xml"},
                 {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/3outlines/junit5_scenario_outline2.xml", "src/test/resources/features/robustgherkin_has_3_examples.feature", "separateResults/cucumber-jvm-final12.xml", "**/separateResults/standard-cucumber-jvm-final12.xml"},
                 {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/3outlines/junit5_scenario_contain_hyphen_outline3.xml", "src/test/resources/features/robustgherkin_has_3_examples_feature_scenario_name_contain_hyphen.feature", "separateResults/cucumber-jvm-final13.xml", "**/separateResults/standard-cucumber-jvm-final13.xml"},
-                {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/3outlines/junit5_scenario_contain_hyphen_outline4.xml", "src/test/resources/features/robustgherkin_has_3_examples_feature_scenario_name_contain_hyphen.feature", "separateResults/cucumber-jvm-final14.xml", "**/separateResults/standard-cucumber-jvm-final14.xml"}
+                {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/3outlines/junit5_scenario_contain_hyphen_outline4.xml", "src/test/resources/features/robustgherkin_has_3_examples_feature_scenario_name_contain_hyphen.feature", "separateResults/cucumber-jvm-final14.xml", "**/separateResults/standard-cucumber-jvm-final14.xml"},
+                {Framework.CUCUMBER_JVM, "src/test/resources/cucumber-jvm/3outlines/junit5_scenario_outline_name_similar.xml", "src/test/resources/features/OutlineConfusion.feature", "separateResults/cucumber-jvm-final15.xml", "**/separateResults/standard-cucumber-jvm-final15.xml"}
 
         });
 

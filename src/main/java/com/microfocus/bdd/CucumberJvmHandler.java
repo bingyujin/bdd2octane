@@ -222,7 +222,7 @@ java.lang.AssertionError
         }
         for (OctaneScenario sce : feature.getScenarios()) {
             if (sceName.startsWith(sce.getOutlineName())) {
-                return (sce.getName());
+                return sce.getName();
             }
         }
         if (octaneFeatureLocator != null && octaneFeatureLocator.length != 0) {
