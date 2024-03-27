@@ -45,8 +45,6 @@ public class CucumberJvmHandler implements BddFrameworkHandler {
     private Element element;
     private String errorMessage;
     private String failedStep;
-    private String failureMessage;
-    private String failureType;
     private String featureFile;
     private String failedLineNum;
     private boolean isSkipped = false;
@@ -89,8 +87,6 @@ java.lang.AssertionError
                  */
 
                 errorMessage = child.getText();
-                failureMessage = child.getAttribute("message");
-                failureType = child.getAttribute("type");
                 String lastLine = findLastNonEmptyLine(errorMessage);
                 if (lastLine.startsWith("at ✽.") || lastLine.startsWith("at ?.")) {
                     extractFeatureFilePath(lastLine);
@@ -100,6 +96,8 @@ java.lang.AssertionError
                         extractFeatureFilePath(optionalString.get());
                     } else {
                         Optional<Element> optionalSystemOut = element.getChild("system-out");
+                        String failureMessage = child.getAttribute("message");
+                        String failureType = child.getAttribute("type");
                         if (optionalSystemOut.isPresent()) {
                             Element systemOut = optionalSystemOut.get();
                             errorMessage = systemOut.getText();
@@ -293,11 +291,7 @@ java.lang.AssertionError
         }
         if (octaneStep.getName().equals(failedStep)) {
             octaneStep.setStatus(Status.FAILED);
-            if (failureMessage != null && failureType != null && errorMessage.contains(failureMessage) && errorMessage.contains(failureType)) {
-                octaneStep.setErrorMessage(errorMessage);
-            } else {
-                octaneStep.setErrorMessage("\n" + failureType + "\n" + failureMessage + "\n" + errorMessage);
-            }
+            octaneStep.setErrorMessage(errorMessage);
         } else {
             octaneStep.setStatus(Status.PASSED);
         }
