@@ -77,7 +77,12 @@ public class OctaneFeature {
     }
 
     public List<OctaneScenario> getScenarios() {
-        return scenarios.values().stream().map(s -> s.scenarios).flatMap(List::stream).collect(Collectors.toList());
+        Comparator<OctaneScenario> comparator = Comparator.comparing(sce -> -sce.getOutlineName().length());
+        return scenarios.values().stream()
+                .map(s -> s.scenarios)
+                .flatMap(List::stream)
+                .sorted(comparator)
+                .collect(Collectors.toList());
     }
 
     public Optional<OctaneScenario> findScenarioAndUpdateOutlineIndex(String scenarioName) {

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="0.247">
+    <testcase classname="Application Login" name="Login with valid credentials" time="0.006">
+        <failure message="The scenario has pending or undefined step(s)" type="java.lang.Exception">
+            <![CDATA[Given User is on the login screen...........................................undefined
+When User inputs the credentials............................................skipped
+Then System should let him login into it....................................skipped
+]]>
+        </failure>
+    </testcase>
+</testsuite>

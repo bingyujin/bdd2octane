@@ -33,9 +33,12 @@ package com.microfocus.bdd;
 
 
 import com.microfocus.bdd.api.*;
+import io.cucumber.messages.types.FeatureChild;
 
-import java.util.Iterator;
+import java.io.IOException;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CucumberJvmHandler implements BddFrameworkHandler {
 
@@ -92,8 +95,12 @@ java.lang.AssertionError
                     if (optionalString.isPresent()) {
                         extractFeatureFilePath(optionalString.get());
                     } else {
-                        element.getChild("system-out").ifPresent(out -> {
-                            errorMessage = out.getText();
+                        Optional<Element> optionalSystemOut = element.getChild("system-out");
+                        String failureMessage = child.getAttribute("message");
+                        String failureType = child.getAttribute("type");
+                        if (optionalSystemOut.isPresent()) {
+                            Element systemOut = optionalSystemOut.get();
+                            errorMessage = systemOut.getText();
                             String failedLine = null;
                             int indexOfPeriod = 0;
                             for (String line : getLinesBottomUp(errorMessage)) {
@@ -114,7 +121,10 @@ java.lang.AssertionError
                             int lineNumIndex = featureFile.lastIndexOf(':');
                             failedLineNum = featureFile.substring(lineNumIndex + 1);
                             featureFile = featureFile.substring(0, lineNumIndex);
-                        });
+                        } else if (failureMessage != null && failureType != null) {
+                            failedStep = findFirstUndefinedLine(errorMessage);
+                        }
+
                     }
                 }
             } else if (childName.equals("skipped")) {
@@ -141,6 +151,20 @@ java.lang.AssertionError
         return Optional.empty();
     }
 
+    private String findFirstUndefinedLine(String message) {
+        for (String line : getLines(message)) {
+            Pattern pattern = Pattern.compile("^\\w+\\s*");
+            if (line.endsWith("undefined")) {
+                Matcher matcher = pattern.matcher(line.split("\\.*undefined$")[0]);
+                return matcher.replaceFirst("");
+            } else if (line.endsWith("skipped")) {
+                Matcher matcher = pattern.matcher(line.split("\\.*skipped$")[0]);
+                return matcher.replaceFirst("");
+            }
+        }
+        return null;
+    }
+
     private Iterable<String> getLinesBottomUp(String message) {
         return () -> new LinesBottomUpIterator(message);
     }
@@ -159,10 +183,26 @@ java.lang.AssertionError
     }
 
     @Override
-    public Optional<String> getFeatureName() {
+    public Optional<String> getFeatureName(OctaneFeatureLocator... octaneFeatureLocator) {
         String classname = element.getAttribute("classname");
         if (classname.isEmpty() || classname.equals("EMPTY_NAME") || classname.equals("Unknown")) {
             return Optional.empty();
+        }
+        if (octaneFeatureLocator != null && octaneFeatureLocator.length > 0) {
+            Optional<OctaneFeature> octaneFeatureOpt;
+            String classnamePart = classname;
+            while (classnamePart.contains("-")) {
+                int lastIndex = classnamePart.lastIndexOf("-");
+                classnamePart = classnamePart.substring(0, lastIndex).trim();
+                try {
+                    octaneFeatureOpt = octaneFeatureLocator[0].getOctaneFeatureByName(classnamePart);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                if (octaneFeatureOpt.isPresent()) {
+                    return Optional.of(classnamePart);
+                }
+            }
         }
         return Optional.of(classname);
     }
@@ -173,14 +213,39 @@ java.lang.AssertionError
     }
 
     @Override
-    public String getScenarioName(OctaneFeature feature) {
+    public String getScenarioName(OctaneFeature feature, OctaneFeatureLocator... octaneFeatureLocator) {
         String sceName = element.getAttribute("name");
         if (!feature.getScenarios(sceName).isEmpty()) {
             return sceName;
         }
         for (OctaneScenario sce : feature.getScenarios()) {
             if (sceName.startsWith(sce.getOutlineName())) {
-                return (sce.getName());
+                return sce.getName();
+            }
+        }
+        if (octaneFeatureLocator != null && octaneFeatureLocator.length != 0) {
+            Optional<String> featureNameOpt = getFeatureName(octaneFeatureLocator);
+            if (featureNameOpt.isPresent()) {
+                String featureName = featureNameOpt.get();
+                if (sceName.startsWith(featureName + " - ")) {
+                    sceName = sceName.split(featureName + " - ")[1].trim();
+                }
+                String sceNamePart = sceName;
+                while (sceNamePart.contains("-")) {
+                    int lastIndex = sceNamePart.lastIndexOf("-");
+                    sceNamePart = sceNamePart.substring(0, lastIndex).trim();
+                    String finalSceNamePart = sceNamePart;
+                    Optional<FeatureChild> child = feature.getGherkinDocument().getFeature().getChildren().stream()
+                            .filter(featureChild -> featureChild.getScenario() != null && featureChild.getScenario().getName().equals(finalSceNamePart)).findFirst();
+                    if (child.isPresent()) {
+                        if (child.get().getScenario().getExamples().isEmpty()) {
+                            return sceName;
+                        } else {
+                            return sceNamePart;
+                        }
+                    }
+                }
+                return sceName;
             }
         }
         return null;

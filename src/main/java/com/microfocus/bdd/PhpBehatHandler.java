@@ -56,7 +56,7 @@ public class PhpBehatHandler implements BddFrameworkHandler {
     }
 
     @Override
-    public Optional<String> getFeatureName() {
+    public Optional<String> getFeatureName(OctaneFeatureLocator... octaneFeatureLocator) {
         return Optional.of(element.getAttribute("classname"));
     }
 
@@ -66,7 +66,7 @@ public class PhpBehatHandler implements BddFrameworkHandler {
     }
 
     @Override
-    public String getScenarioName(OctaneFeature feature) {
+    public String getScenarioName(OctaneFeature feature, OctaneFeatureLocator... octaneFeatureLocator) {
         String elementName = element.getAttribute("name");
         if (!feature.getScenarios(elementName).isEmpty()) {
             return elementName;

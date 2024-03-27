@@ -79,7 +79,7 @@ public class CucumberJsHandler implements BddFrameworkHandler {
     }
 
     @Override
-    public Optional<String> getFeatureName() {
+    public Optional<String> getFeatureName(OctaneFeatureLocator... octaneFeatureLocator) {
         return Optional.empty();
     }
 
@@ -89,7 +89,7 @@ public class CucumberJsHandler implements BddFrameworkHandler {
     }
 
     @Override
-    public String getScenarioName(OctaneFeature feature) {
+    public String getScenarioName(OctaneFeature feature, OctaneFeatureLocator... octaneFeatureLocator) {
         String featureName = feature.getName();
         String featureNameWithDash = featureName.replaceAll(" ", "-");
         featureNameWithDash = featureNameWithDash.substring(0, 1).toLowerCase() + featureNameWithDash.substring(1);

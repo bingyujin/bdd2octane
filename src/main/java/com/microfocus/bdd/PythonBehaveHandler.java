@@ -84,7 +84,7 @@ public class PythonBehaveHandler implements BddFrameworkHandler {
     }
 
     @Override
-    public Optional<String> getFeatureName() {
+    public Optional<String> getFeatureName(OctaneFeatureLocator... octaneFeatureLocator) {
         String featureNameWithFileName = element.getAttribute("classname");
         return Optional.of(featureNameWithFileName.substring(featureNameWithFileName.indexOf(".") + 1));
     }
@@ -95,7 +95,7 @@ public class PythonBehaveHandler implements BddFrameworkHandler {
     }
 
     @Override
-    public String getScenarioName(OctaneFeature feature) {
+    public String getScenarioName(OctaneFeature feature, OctaneFeatureLocator... octaneFeatureLocator) {
         String sceName = element.getAttribute("name");
         if (!feature.getScenarios(sceName).isEmpty()) {
             return sceName;

@@ -69,7 +69,7 @@ public class PythonRadishHandler implements BddFrameworkHandler {
     }
 
     @Override
-    public Optional<String> getFeatureName() {
+    public Optional<String> getFeatureName(OctaneFeatureLocator... octaneFeatureLocator) {
         return Optional.of(element.getAttribute("classname"));
     }
 
@@ -79,7 +79,7 @@ public class PythonRadishHandler implements BddFrameworkHandler {
     }
 
     @Override
-    public String getScenarioName(OctaneFeature feature) {
+    public String getScenarioName(OctaneFeature feature, OctaneFeatureLocator... octaneFeatureLocator) {
         //two cases: with outline/without outline
         String elementScenarioName = element.getAttribute("name");
         Matcher scenarioOutLineSuffixMatcher = scenarioOutLineSuffixPattern.matcher(elementScenarioName);
