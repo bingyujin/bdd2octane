@@ -1,5 +1,4 @@
 #Auto generated Octane revision tag
-@BSPID1001REV0.2.0
 Feature: Some terse yet descriptive text of what is desired like bla bla 3 examples
   A description with
   multiple
@@ -11,7 +10,6 @@ Feature: Some terse yet descriptive text of what is desired like bla bla 3 examp
     * a customer named "Wilson"
 
   @Quick @full @annoy
-  @TSCID1001
   Scenario: Some determinable business situation
     * star at first step
     Given the following people exist:
@@ -25,7 +23,6 @@ Feature: Some terse yet descriptive text of what is desired like bla bla 3 examp
     And something else we can check happens too
 
   @Quick @nightly
-  @TSCID1002
   Scenario: Some another scenario 2
   scenario 2 description
     Given some precondition
@@ -40,7 +37,6 @@ Feature: Some terse yet descriptive text of what is desired like bla bla 3 examp
     But I don't see something else
 
 
-  @TSCID1003
   Scenario Outline: feeding a cow <name> yum yum yum
   scenario outline
   description
