@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="Cucumber" skipped="0" tests="4" time="1.787">
+    <testcase classname="Grundrisse mit aehnlichen Namen" name="Ein einfacher Grundriss - Example #1.1" time="0.048">
+        <system-out>
+            <![CDATA[Wenn ich "etwas" tue........................................................passed
+Dann passiert "etwas".......................................................passed
+]]>
+        </system-out>
+    </testcase>
+    <testcase classname="Grundrisse mit aehnlichen Namen" name="Ein einfacher Grundriss - Example #1.2" time="0.002">
+        <system-out>
+            <![CDATA[Wenn ich "etwas anderes" tue................................................passed
+Dann passiert "etwas anderes"...............................................passed
+]]>
+        </system-out>
+    </testcase>
+    <testcase classname="Grundrisse mit aehnlichen Namen" name="Ein einfacher Grundriss mit einem Zusatz - Example #1.1" time="0">
+        <system-out>
+            <![CDATA[Wenn ich "etwas ganz neues" tue.............................................passed
+Dann passiert "etwas ganz neues"............................................passed
+]]>
+        </system-out>
+    </testcase>
+    <testcase classname="Grundrisse mit aehnlichen Namen" name="Ein einfacher Grundriss mit einem Zusatz 2 - Example #1.2" time="0.001">
+        <system-out>
+            <![CDATA[Wenn ich "etwas altes" tue..................................................passed
+Dann passiert "etwas altes".................................................passed
+]]>
+        </system-out>
+    </testcase>
+</testsuite>

@@ -1,10 +1,33 @@
-/*
- * © Copyright [2021] Micro Focus or one of its affiliates.
- * Licensed under Apache License (the "License");
+ /**
+ *
+ * Copyright 2021-2023 Open Text
+ *
+ * The only warranties for products and services of Open Text and
+ * its affiliates and licensors (“Open Text”) are as may be set forth
+ * in the express warranty statements accompanying such products and services.
+ * Nothing herein should be construed as constituting an additional warranty.
+ * Open Text shall not be liable for technical or editorial errors or
+ * omissions contained herein. The information contained herein is subject
+ * to change without notice.
+ *
+ * Except as specifically indicated otherwise, this document contains
+ * confidential information and a valid license is required for possession,
+ * use or copying. If this work is provided to the U.S. Government,
+ * consistent with FAR 12.211 and 12.212, Commercial Computer Software,
+ * Computer Software Documentation, and Technical Data for Commercial Items are
+ * licensed to the U.S. Government under vendor's standard commercial license.
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at:
- * http://www.apache.org/licenses/
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.microfocus.bdd;
 
@@ -17,6 +40,7 @@ import io.cucumber.gherkin.GherkinDialectProvider;
 
 import java.io.*;
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -116,35 +140,36 @@ public class FeatureFileLocator {
 
     private Optional<FeatureFileMeta> tryToGetFeatureFileMeta(String featureName, String featureFile) throws IOException {
         FeatureFileMeta featureFileMeta = new FeatureFileMeta(featureFile, GherkinMultiLingualService.DEFAULT_LANGUAGE);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(featureFile), "UTF8"));
+        Pattern pattern = Pattern.compile("^#\\s*language");
 
-
-        List<String> translatedFeatureNames;
-        while (true) {
-            String line = reader.readLine();
-            if (line == null) {
-                break;
-            }
-            if (line.contains("# language")) {
-                parseLanguage(line).ifPresent(lang -> featureFileMeta.setLanguage(lang));
-                continue;
-            }
-            if (line.startsWith("#")) {
-                continue;
-            }
-            translatedFeatureNames = new GherkinDialectProvider(featureFileMeta.getLanguage())
-                    .getDialect(featureFileMeta.getLanguage(), null).getFeatureKeywords();
-            if (translatedFeatureNames.stream().anyMatch(line::contains)) {
-                String[] featureNamePattern = line.split(":", 2);
-                if (featureNamePattern.length >= 2) {
-                    String fName = featureNamePattern[1].trim();
-                    featureNameToFeatureFileMetaMap.putIfAbsent(fName, featureFileMeta);
-                    featureFiles.remove(fName);
-                    if (fName.equals(featureName)) {
-                        return Optional.of(featureFileMeta);
-                    }
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(featureFile), "UTF8"))) {
+            List<String> translatedFeatureNames;
+            while (true) {
+                String line = reader.readLine();
+                if (line == null) {
+                    break;
                 }
-                break;
+                if (pattern.matcher(line).find()) {
+                    parseLanguage(line).ifPresent(lang -> featureFileMeta.setLanguage(lang));
+                    continue;
+                }
+                if (line.startsWith("#")) {
+                    continue;
+                }
+                translatedFeatureNames = new GherkinDialectProvider(featureFileMeta.getLanguage())
+                        .getDialect(featureFileMeta.getLanguage(), null).getFeatureKeywords();
+                if (translatedFeatureNames.stream().anyMatch(line::contains)) {
+                    String[] featureNamePattern = line.split(":", 2);
+                    if (featureNamePattern.length >= 2) {
+                        String fName = featureNamePattern[1].trim();
+                        featureNameToFeatureFileMetaMap.putIfAbsent(fName, featureFileMeta);
+                        featureFiles.remove(fName);
+                        if (fName.equals(featureName)) {
+                            return Optional.of(featureFileMeta);
+                        }
+                    }
+                    break;
+                }
             }
         }
         return Optional.empty();

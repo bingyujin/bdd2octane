@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite tests="2" name="io.cucumber.core.plugin.JUnitFormatter" failures="0" skipped="0" errors="0" time="54.888">
+<testcase classname="Selecionar empresa responsavel" name="Mostrar empresa responsável" time="44.008">
+<system-out><![CDATA[Given que o usuário esteja logado no sistema com cpf "45849905065"..........passed
+And o usuário navega até a 'página Meu Roteiro'.............................passed
+And acesso um card de sinistro..............................................passed
+And o sistema deve exibir o nome da empresa responsável.....................passed
+Then deve exibir uma lista selecionável conforme cadastro do usuário........passed
+]]></system-out>
+</testcase>
+<testcase classname="Nova Vistoria" name="Validar não exibição do botão Nova Vistoria para perfis diferentes de Orçamentista Oficina" time="54.258">
+<system-out><![CDATA[Given que o usuário esteja logado no sistema com cpf "53133447068"..........passed
+Then não visualiza o botão Nova Vistoria....................................passed
+]]></system-out>
+</testcase>
+</testsuite>

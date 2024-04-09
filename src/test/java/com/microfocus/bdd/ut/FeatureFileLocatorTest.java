@@ -1,10 +1,33 @@
-/*
- * © Copyright [2021] Micro Focus or one of its affiliates.
- * Licensed under Apache License (the "License");
+ /**
+ *
+ * Copyright 2021-2023 Open Text
+ *
+ * The only warranties for products and services of Open Text and
+ * its affiliates and licensors (“Open Text”) are as may be set forth
+ * in the express warranty statements accompanying such products and services.
+ * Nothing herein should be construed as constituting an additional warranty.
+ * Open Text shall not be liable for technical or editorial errors or
+ * omissions contained herein. The information contained herein is subject
+ * to change without notice.
+ *
+ * Except as specifically indicated otherwise, this document contains
+ * confidential information and a valid license is required for possession,
+ * use or copying. If this work is provided to the U.S. Government,
+ * consistent with FAR 12.211 and 12.212, Commercial Computer Software,
+ * Computer Software Documentation, and Technical Data for Commercial Items are
+ * licensed to the U.S. Government under vendor's standard commercial license.
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at:
- * http://www.apache.org/licenses/
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.microfocus.bdd.ut;
 
@@ -25,12 +48,18 @@ public class FeatureFileLocatorTest {
         String featureName = "Some terse yet descriptive text of what is desired like bla bla";
         String featureName01 = "Some terse yet descriptive text of what is desired: like bla bla01";
         String featureName02 = "Some terse yet descriptive text of what is desired like bla bla02";
+        String featureName03 = "Some terse yet descriptive text of what is desired like bla bla tag in comment";
         String featureNameInCN = "一个功能";
         String featureNameInDE = "Funktion";
+        String featureNameInDELanguageTag01 = "Funktion01";
+        String featureNameInDELanguageTag02 = "Funktion02";
         FeatureFileLocator featureFileLocator = new FeatureFileLocator(Arrays.asList(
                 "src/test/resources/features/robustgherkin.feature",
+                "src/test/resources/features/robustgherkin_language_tag_in_comment.feature",
                 "src/test/resources/features/robustgherkin_cn.feature",
                 "src/test/resources/features/robustgherkin_de.feature",
+                "src/test/resources/features/robustgherkin_de_language_tag_01.feature",
+                "src/test/resources/features/robustgherkin_de_language_tag_02.feature",
                 "src/test/resources/features/robustgherkin01.feature",
                 "src/test/resources/features/robustgherkin02.feature"));
         Assert.assertEquals("find robustgherkin.feature by name: " + featureName, "src/test/resources/features/robustgherkin.feature",
@@ -49,6 +78,12 @@ public class FeatureFileLocatorTest {
                 featureFileLocator.getFeatureFileMeta(featureNameInDE).getFeatureFile());
         Assert.assertEquals("find robustgherkin.feature language is " + GherkinMultiLingualService.DE_LANGUAGE, GherkinMultiLingualService.DE_LANGUAGE,
                 featureFileLocator.getFeatureFileMeta(featureNameInDE).getLanguage());
+        Assert.assertEquals("find robustgherkin.feature language is " + GherkinMultiLingualService.DE_LANGUAGE, GherkinMultiLingualService.DE_LANGUAGE,
+                featureFileLocator.getFeatureFileMeta(featureNameInDELanguageTag01).getLanguage());
+        Assert.assertEquals("find robustgherkin.feature language is " + GherkinMultiLingualService.DE_LANGUAGE, GherkinMultiLingualService.DE_LANGUAGE,
+                featureFileLocator.getFeatureFileMeta(featureNameInDELanguageTag02).getLanguage());
+        Assert.assertEquals("find robustgherkin.feature language is " + GherkinMultiLingualService.DEFAULT_LANGUAGE, GherkinMultiLingualService.DEFAULT_LANGUAGE,
+                featureFileLocator.getFeatureFileMeta(featureName03).getLanguage());
     }
 
     @Test

@@ -1,10 +1,33 @@
-/*
- * © Copyright [2021] Micro Focus or one of its affiliates.
- * Licensed under Apache License (the "License");
+ /**
+ *
+ * Copyright 2021-2023 Open Text
+ *
+ * The only warranties for products and services of Open Text and
+ * its affiliates and licensors (“Open Text”) are as may be set forth
+ * in the express warranty statements accompanying such products and services.
+ * Nothing herein should be construed as constituting an additional warranty.
+ * Open Text shall not be liable for technical or editorial errors or
+ * omissions contained herein. The information contained herein is subject
+ * to change without notice.
+ *
+ * Except as specifically indicated otherwise, this document contains
+ * confidential information and a valid license is required for possession,
+ * use or copying. If this work is provided to the U.S. Government,
+ * consistent with FAR 12.211 and 12.212, Commercial Computer Software,
+ * Computer Software Documentation, and Technical Data for Commercial Items are
+ * licensed to the U.S. Government under vendor's standard commercial license.
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at:
- * http://www.apache.org/licenses/
- * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package com.microfocus.bdd;
 
@@ -18,9 +41,12 @@ import javax.xml.stream.XMLStreamWriter;
 import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.*;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 
 public class Bdd2Octane {
@@ -73,7 +99,7 @@ public class Bdd2Octane {
                         continue;
                     }
                 } else {
-                    Optional<String> featureNameOpt = bddFrameworkHandler.getFeatureName();
+                    Optional<String> featureNameOpt = bddFrameworkHandler.getFeatureName(octaneFeatureLocator);
                     if (featureNameOpt.isPresent() && !featureNameOpt.get().isEmpty()) {
                         String featureName = featureNameOpt.get();
                         Optional<OctaneFeature> octaneFeatureOpt = octaneFeatureLocator.getOctaneFeatureByName(featureName);
@@ -97,17 +123,13 @@ public class Bdd2Octane {
                     }
                 }
 
-                if (previousFeature != null) {
-                    if (previousFeature != octaneFeature) {
+                if (previousFeature != null && previousFeature != octaneFeature) {
                         writeFeatureToXML(writer, previousFeature);
-                        previousFeature = null;
-                    }
-                } else {
-                    previousFeature = octaneFeature;
                 }
+                previousFeature = octaneFeature;
 
                 //2. get scenarioName
-                String scenarioName = bddFrameworkHandler.getScenarioName(octaneFeature);
+                String scenarioName = bddFrameworkHandler.getScenarioName(octaneFeature, octaneFeatureLocator);
                 if (Strings.isNullOrEmpty(scenarioName)) {
                     System.err.println(bddFrameworkHandler.getClass().getSimpleName()
                             + " cannot extract a scenario out of XML " + file + ":" + testCaseElement.getLineNum() + "\n"
@@ -161,20 +183,25 @@ public class Bdd2Octane {
 
     private Optional<String> canonicalizeFilePath(String featureFile) {
         return featureFiles.stream().filter(f -> {
-            if (featureFile.startsWith("file:///")) {
-                try {
-                    URI uri = new URI(featureFile);
-                    return Paths.get(f).toUri().equals(uri);
-                } catch (URISyntaxException e) {
-                    throw new RuntimeException(e);
+            try {
+                if (featureFile.startsWith("file:///")) {
+                    try {
+                        URI uri = new URI(featureFile);
+                        return Paths.get(f).toUri().equals(uri);
+                    } catch (URISyntaxException e) {
+                        throw new RuntimeException(e);
+                    }
+                } else if (featureFile.startsWith("file:")) {
+                    return Paths.get(URLDecoder.decode(f,StandardCharsets.UTF_8.toString())).endsWith(URLDecoder.decode(featureFile.substring(5), StandardCharsets.UTF_8.toString()));
+                } else if (featureFile.startsWith("classpath:")) {
+                    return Paths.get(URLDecoder.decode(f,StandardCharsets.UTF_8.toString())).endsWith(URLDecoder.decode(featureFile.substring(10), StandardCharsets.UTF_8.toString()));
+                } else {
+                    return Paths.get(URLDecoder.decode(f,StandardCharsets.UTF_8.toString())).endsWith(URLDecoder.decode(featureFile, StandardCharsets.UTF_8.toString()));
                 }
-            } else if (featureFile.startsWith("file:")) {
-                return Paths.get(f).endsWith(featureFile.substring(5));
-            } else if (featureFile.startsWith("classpath:")) {
-                return Paths.get(f).endsWith(featureFile.substring(10));
-            } else {
-                return Paths.get(f).endsWith(featureFile);
+            }catch (IllegalArgumentException | UnsupportedEncodingException e){
+                System.err.println("Failed to decode feature file from report. feature file:" +featureFile + ", error: " + e.getMessage());
             }
+            return false;
         }).findFirst();
     }
 
